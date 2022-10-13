@@ -10,11 +10,11 @@
 
 ## Topik
 
-TBA
+Aplikasi ini merupakan aplikasi berbasis platform yang menwarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi.
 
 ### Manfaat
 
-TBA
+Dengan aplikasi ini lingkungan akan menjadi lebih bersih karena warga dapat memiliki akses yang lebih mudah untuk membuang sampah dan menjadi tidak rumit. Dengan kemudahan yang diberikan warga akan lebih peduli dengan lingkungan sekitar.
 
 ## Modul
 
