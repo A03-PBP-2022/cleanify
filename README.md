@@ -48,6 +48,6 @@ Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering 
 Role pada Cleanify terbagi menjadi tiga.
 
 1. User: Pengguna biasa/umum
-2. Crew: 
+2. Crew: Pelihat laporan wilayah sampah dan tugas lainnya
 3. Admin: Pengelola aplikasi
 
