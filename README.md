@@ -19,7 +19,7 @@ Aplikasi ini merupakan aplikasi berbasis platform yang menawarkan jasa untuk mem
 
 ### 💢 Manfaat
 
-Dengan aplikasi ini lingkungan akan menjadi lebih bersih karena warga dapat memiliki akses yang lebih mudah untuk membuang sampah dan menjadi tidak rumit. Dengan kemudahan yang diberikan warga akan lebih peduli dengan lingkungan sekitar dan juga menanamkan sifat gotong royong serta saling membantu satu sama lain. Beberapa manfaat utama aplikasi ini adalah pembersihan wilayah sampah oleh cleaner crews dan bank sampah yang menerima sampah rumah tangga Anda untuk didaur ulang. Akan terdapat formulir pelaporan wilayah sampah, formulir bank sampah, serta FAQ mengenai visi, misi, dan penggunaan aplikasi Cleanify. Jika mendaftar sebagai seorang crew, Anda dapat melihat titik-titik wilayah sampah dan informasi seputarnya untuk membantu secara suka rela dalam pembersihan wilayah sampah.
+Dengan aplikasi ini lingkungan akan menjadi lebih bersih karena warga dapat memiliki akses yang lebih mudah untuk membuang sampah dan menjadi tidak rumit. Dengan kemudahan yang diberikan warga akan lebih peduli dengan lingkungan sekitar dan juga menanamkan sifat gotong royong serta saling membantu satu sama lain. Beberapa manfaat utama aplikasi ini adalah pembersihan wilayah sampah oleh cleaner crews dan bank sampah yang menerima sampah rumah tangga Anda untuk didaur ulang. Akan terdapat formulir pelaporan wilayah sampah, formulir bank sampah, serta FAQ mengenai visi, misi, dan penggunaan aplikasi Cleanify. Jika Anda mendaftar sebagai seorang cleaner crew, Anda dapat melihat titik-titik wilayah sampah dan informasi seputarnya untuk membantu secara suka rela dalam pembersihan wilayah sampah.
 
 ## 💾 Modul
 
