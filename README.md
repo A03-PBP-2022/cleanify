@@ -43,7 +43,11 @@ Modul ini merupakan halaman yang berisikan form untuk user melakukan setor sampa
 
 Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi yang kami buat nantinya. Modul ini dapat dilihat dan diakses oleh user.
 
-## 👥 Role
+## 👥 Roles
 
-Role pada Cleanify terbagi menjadi tiga. Pertama adalah user yaitu pengguna yang nantinya akan menggunakan aplikasi. Kedua adalah Admin sebagai pengelola aplikasi. Dan yang terakhir adalah Crew yaitu 
+Role pada Cleanify terbagi menjadi tiga.
+
+1. User: Pengguna biasa/umum
+2. Crew: 
+3. Admin: Pengelola aplikasi
 
