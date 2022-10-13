@@ -1,7 +1,7 @@
-# CLEANIFY
+# Cleanify
 
 [![Status deployment](https://img.shields.io/github/workflow/status/A03-PBP-2022/proyek/Deployment?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/deployment.yml)
-[![Aplikasi Heroku](https://img.shields.io/badge/heroku-app--name--here-blue?logo=heroku&logoColor=white)](https://app-name-here.herokuapp.com/)
+[![Aplikasi Heroku](https://img.shields.io/badge/heroku-cleanifyid-blue?logo=heroku&logoColor=white)](https://cleanifyid.herokuapp.com/)
 
 🌐 Aplikasi Heroku: https://cleanifyid.herokuapp.com/
 
@@ -15,11 +15,11 @@
 
 ## 🧠 Topik
 
-Aplikasi ini merupakan aplikasi berbasis platform yang menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Platform ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.
+Aplikasi ini merupakan aplikasi berbasis platform yang menwarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Platform ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.
 
 ### 💢 Manfaat
 
-Dengan aplikasi ini lingkungan akan menjadi lebih bersih karena warga dapat memiliki akses yang lebih mudah untuk membuang sampah dan menjadi tidak rumit. Dengan kemudahan yang diberikan warga akan lebih peduli dengan lingkungan sekitar dan juga menanamkan sifat gotong royong serta saling membantu satu sama lain. Beberapa manfaat utama aplikasi ini adalah pembersihan wilayah sampah oleh cleaner crews dan bank sampah yang menerima sampah rumah tangga Anda untuk didaur ulang.
+Dengan aplikasi ini lingkungan akan menjadi lebih bersih karena warga dapat memiliki akses yang lebih mudah untuk membuang sampah dan menjadi tidak rumit. Dengan kemudahan yang diberikan warga akan lebih peduli dengan lingkungan sekitar dan juga menanamkan sifat gotong royong serta saling membantu satu sama lain.
 
 ## 💾 Modul
 
