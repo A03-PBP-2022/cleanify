@@ -21,6 +21,9 @@ Dengan aplikasi ini lingkungan akan menjadi lebih bersih karena warga dapat memi
 ### 1. Authentication
 Modul ini berfungsi untuk proses login user agar user dapat mengakses halaman-halaman lain yang tersedia. Selain itu juga terdapat form registrasi untuk mendaftarkan data user ke sistem. Apabila pengguna telah berhasil melewati proses authentication maka pengguna dapat mengakses halaman-halaman lain. Terakhir, juga terdapat form logout yang berfungsi untuk keluar dari aplikasi.
 
+### 2. Dashboard Laporan Wilayah Sampah
+Modul ini merupakan dashboard yang berisi laporan-laporan wilayah sampah yang perlu dibersihkan oleh para cleaner crews. Laporan yang ditampilkan merupakan hasil pengisian form berupa pelaporan wilayah sampah yang patut dibersihkan. Dashboard ini dikhususkan untuk para cleaner crews agar mereka mendapat informasi lebih lanjut terkait wilayah sampah tersebut dan tindakan yang akan direncanakan.
+
 ### 4. Bank Sampah
 Modul ini merupakan halaman yang berisikan form untuk user melakukan setor sampah ke dalam tempat bank sampah tersebut. Setelah melakukan pengisian form tersebut, maka akan dilakukannya pengambilan sampah tersebut.
 
