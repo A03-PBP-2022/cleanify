@@ -21,3 +21,6 @@ Dengan aplikasi ini lingkungan akan menjadi lebih bersih karena warga dapat memi
 ### 1. Authentication
 Modul ini berfungsi untuk proses login user agar user dapat mengakses halaman-halaman lain yang tersedia. Selain itu juga terdapat form registrasi untuk mendaftarkan data user ke sistem. Apabila pengguna telah berhasil melewati proses authentication maka pengguna dapat mengakses halaman-halaman lain. Terakhir, juga terdapat form logout yang berfungsi untuk keluar dari aplikasi.
 
+### 5. FAQ
+Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi yang kami buat nantinya. Modul ini dapat dilihat dan diakses oleh user.
+
