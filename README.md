@@ -29,7 +29,7 @@ Modul ini berfungsi untuk proses login user agar user dapat mengakses halaman-ha
 
 ### 2. Pelaporan Wilayah Sampah
 
-TBA
+Modul ini berfungsi sebagai tempat melaporkan wilayah sampah yang perlu dibersihkan oleh crew, yang dikhususkan untuk user untuk diisi. Laporan ini nanti akan ditunjukkan pada dasbor laporan wilayah sampah.
 
 ### 3. Dashboard Laporan Wilayah Sampah
 
