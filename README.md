@@ -17,5 +17,6 @@ Aplikasi ini merupakan aplikasi berbasis platform yang menwarkan jasa untuk memb
 Dengan aplikasi ini lingkungan akan menjadi lebih bersih karena warga dapat memiliki akses yang lebih mudah untuk membuang sampah dan menjadi tidak rumit. Dengan kemudahan yang diberikan warga akan lebih peduli dengan lingkungan sekitar dan juga menanamkan sifat gotong royong serta saling membantu satu sama lain.
 
 ## Modul
-
+# authentication
+Modul ini berfungsi untuk proses login user agar user dapat mengakses halaman-halaman lain yang tersedia. Selain itu juga terdapat form registrasi untuk mendaftarkan data user ke sistem. Apabila pengguna telah berhasil melewati proses authentication maka pengguna dapat mengakses halaman-halaman lain.
 TBA
