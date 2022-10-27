@@ -1,0 +1,15 @@
+{% extends 'blog.html' %}
+
+{% block title %}Post{% endblock title %}
+
+{% block content_blog %}
+<article itemscope itemtype="http://schema.org/BlogPosting">
+	<header>
+		<h1 itemprop="name headline">{{ post.title }}</h1>
+		<p class="text-muted"><time datetime='{{ post.timestamp | date:"c" }}' itemprop="datePublished">{{ post.timestamp | date:"d F Y" }}</time> - {{ post.author }}</p>
+	</header>
+	<div itemprop="articleBody">
+		{{ post.content }}
+	</div>
+</article>
+{% endblock content_blog %}

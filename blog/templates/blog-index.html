@@ -1,0 +1,19 @@
+{% extends 'blog.html' %}
+
+{% block meta %}
+<title>Blog</title>
+{% endblock meta %}
+
+{% block content_blog %}
+<h2>Blog</h2>
+{% for post in posts %}<article>
+	<h3>
+		{{ post.title }}
+	</h3>
+	<p>
+		{{ post.content }}
+	</p>
+	<p><a href="">[read more]</a></p>
+	<hr>
+</article>{% endfor %}
+{% endblock content_blog %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>{% block title %}{% endblock title %} - Blog</title>
+{% endblock meta %}
+
+{% block content %}
+<div class="container pt-4">
+	{% block content_blog %}
+	{% endblock content_blog %}
+</div>
+{% endblock content %}
