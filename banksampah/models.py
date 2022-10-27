@@ -2,8 +2,8 @@ from django.db import models
 # Create your models here.
 
 PILIHAN_SAMPAH = (
-    ('organik','ORGANIK'),
-    ('anorganik', 'ANORGANIK'),
+    ('organik','Organik'),
+    ('anorganik', 'Anorganik'),
     ('B3','B3'),
 )
 
