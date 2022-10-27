@@ -1,8 +1,8 @@
-from banksampah.views import form_bank
+from banksampah.views import create_post
 from django.urls import path
 
 app_name = 'banksampah'
 
 urlpatterns = [
-    path('', form_bank, name='form_bank'),
+    path('', create_post, name='create_post'),
 ]
