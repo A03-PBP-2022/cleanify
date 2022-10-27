@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Bank Sampah</title>
+{% endblock meta %}
+
+{% block content %}
+
+<div class = "bank">
+
+    <h1>Form Bank Sampah</h1>
+
+        <form method="POST" >
+            {% csrf_token %}
+            <table>
+
+                <tr>
+                    <td>Alamat: </td>
+                    <td>{{form.alamat}}</td>
+                </tr>
+
+                <tr>
+                    <td>Tanggal: </td>
+                    <td>{{form.tanggal}}</td>
+                </tr>
+
+                <tr>
+                    <td>Kontak: </td>
+                    <td>{{form.kontak}}</td>
+                </tr>
+
+                <tr>
+                    <td for="jenis">Jenis: </td>
+                    <td>{{form.jenis}}</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><button id="button" type="submit" class="btn btn-success">Submit</button><td>
+                </tr>
+            </table>
+        </form>
+
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock content %}
