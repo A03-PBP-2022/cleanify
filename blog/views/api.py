@@ -52,7 +52,7 @@ def create_post(request):
 		return apires_bad_request()
 	
 	to_save = form.save(commit=False)
-	to_save.user = request.user
+	to_save.author = request.user
 	to_save.save()
 	form.save_m2m()
 	
@@ -139,7 +139,7 @@ def create_comment(request, post_id):
 		return apires_bad_request()
 	
 	to_save = form.save(commit=False)
-	to_save.user = request.user
+	to_save.author = request.user
 	to_save.post = post
 	to_save.save()
 	form.save_m2m()

@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import api, page 
+from .views import api, page, auth_test
 app_name = 'blog'
 
 urlpatterns = [
-	path('', page.show_index_blog, name='blog_index'),
-	path('create-post/', page.create_post, name='blog_create_post'),
+	path('', page.show_index, name='index'),
+	path('new/', page.create_post, name='create_post'),
 	path('<int:id>/', page.show_post, name='view_post'),
     
 	path('api/post', api.list_posts, name='api_list_posts'),

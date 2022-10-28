@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from blog.models import Post, Comment
 
-def show_index_blog(request):
+def show_index(request):
 
 	posts = Post.objects.all()
 
