@@ -1,0 +1,42 @@
+/* Custom styles here... */
+
+body {
+    align-items: center;
+    background-color: #588157;
+    justify-content: center;
+    display: flex;
+    height: 97vh;
+}
+
+h1{
+    color: #eee;
+    font-family: Tahoma;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900px;
+    margin-top: 30px;
+}
+
+
+
+/* .submit{
+    background-color: #344e41;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    text-align: center;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    outline: 0;
+    width: 100%;
+}
+.submit:active{
+    background-color: rgb(3, 97, 5);
+}
+.submit:hover{
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+} */
