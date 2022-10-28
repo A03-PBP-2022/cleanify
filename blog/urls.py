@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import api, page, auth_test
+from .views import api, page
 app_name = 'blog'
 
 urlpatterns = [
