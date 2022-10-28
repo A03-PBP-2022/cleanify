@@ -4,7 +4,7 @@ app_name = 'blog'
 
 urlpatterns = [
 	path('', page.show_index_blog, name='blog_index'),
-	path('new-post/', page.create_post_page, name='blog_new_post'),
+	path('create-post/', page.create_post, name='blog_create_post'),
 	path('<int:id>/', page.show_post, name='view_post'),
     
 	path('api/post', api.list_posts, name='api_list_posts'),

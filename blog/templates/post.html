@@ -22,7 +22,7 @@
 <hr>
 <section id="comments">
 	<h2>Comments</h2>
-	<form id="new-comment-form" method="post" action="{% url 'blog:api_edit_post' %}">
+	<form id="new-comment-form" method="post" action="{% url 'blog:api_create_comment' post.pk %}">
 		<div class="mb-3">
 			<textarea type="text" class="form-control" id="new-comment-input" name="content"></textarea>
 		</div>

@@ -25,6 +25,6 @@ def show_post(request, id):
 		'comments': comments
 	})
 
-def create_post_page(request):
+def create_post(request):
 
 	return render(request, "post-create.html", {})

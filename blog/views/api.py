@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.core import serializers
+from django.utils import timezone
 from blog.forms import PostForm, CommentForm
 from blog.models import Post, Comment
 from datetime import date, datetime
@@ -45,15 +46,13 @@ def create_post(request):
 	if not request.method == "POST":
 		return apires_bad_request()
 	
-	form = PostForm(json.loads(request.body), instance=Post())
+	form = PostForm(request.POST or json.loads(request.body), instance=Post())
 
 	if not form.is_valid():
 		return apires_bad_request()
 	
 	to_save = form.save(commit=False)
 	to_save.user = request.user
-	to_save.created_timestamp = datetime.today()
-	to_save.edited_timestamp = datetime.today()
 	to_save.save()
 	form.save_m2m()
 	
@@ -75,7 +74,6 @@ def edit_post(request, post_id):
 
 	post.title = request.body['title']
 	post.content = request.body['content']
-	post.edited_timestamp = datetime.today()
 	post.save()
 
 	return apires_ok()
@@ -135,15 +133,13 @@ def create_comment(request, post_id):
 	if not post:
 		return apires_bad_request()
 
-	form = CommentForm(json.loads(request.body), instance=Comment())
+	form = CommentForm(request.POST or json.loads(request.body), instance=Comment())
 
 	if not form.is_valid():
 		return apires_bad_request()
 	
 	to_save = form.save(commit=False)
 	to_save.user = request.user
-	to_save.created_timestamp = datetime.today()
-	to_save.edited_timestamp = datetime.today()
 	to_save.post = post
 	to_save.save()
 	form.save_m2m()
@@ -170,7 +166,6 @@ def edit_comment(request, post_id, comment_id):
 			return apires_unauthorized()
 	
 	comment.content = request.body['content']
-	comment.edited_timestamp = datetime.today()
 	comment.save()
 
 	return apires_created()

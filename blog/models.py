@@ -5,8 +5,8 @@ class Post(models.Model):
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	title = models.TextField()
 	content = models.TextField()
-	created_timestamp = models.DateTimeField()
-	edited_timestamp = models.DateTimeField()
+	created_timestamp = models.DateTimeField(auto_now_add=True)
+	modified_timestamp = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		permissions = [
@@ -24,8 +24,8 @@ class Comment(models.Model):
 	author = models.ForeignKey(User, on_delete=models.CASCADE)
 	content = models.TextField()
 	post = models.ForeignKey(Post, on_delete=models.CASCADE)
-	created_timestamp = models.DateTimeField()
-	edited_timestamp = models.DateTimeField()
+	created_timestamp = models.DateTimeField(auto_now_add=True)
+	modified_timestamp = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		permissions = [
