@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+
+<title>{% block title %}{% endblock title %} - Blog</title>
+<link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
+{% block meta-extra %}
+{% endblock meta-extra %}
+
+{% endblock meta %}
+
+{% block content %}
+<div class="container py-4">
+	{% block content-blog %}
+	{% endblock content-blog %}
+</div>
+{% endblock content %}

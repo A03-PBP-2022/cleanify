@@ -1,0 +1,23 @@
+{% extends 'base-blog.html' %}
+{% load static markdown %}
+
+{% block title %}
+Blog
+{% endblock title %}
+
+{% block content-blog %}
+<h1>Blog</h1>
+
+{% for post in posts %}<article class="post-list">
+	<header class="post-list-header">
+		<h2 itemprop="name headline" class="post-title"><a href='{% url "blog:view_post" post.pk %}'>{{ post.title }}</a></h2>
+		<p class="text-muted post-info"><time datetime='{{ post.timestamp | date:"c" }}' itemprop="datePublished">{{ post.created_timestamp | date:"d F Y" }}</time> - {{ post.author }}</p>
+	</header>
+	<div itemprop="articleBody" class="post-content">
+		{{ post.content | markdown | safe }}
+	</div>
+	<p><a href='{% url "blog:view_post" post.pk %}' class="post-list-read-more">[read more]</a></p>
+	<hr>
+</article>{% endfor %}
+
+{% endblock content-blog %}
