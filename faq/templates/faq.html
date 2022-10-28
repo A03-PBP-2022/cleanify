@@ -42,7 +42,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         
-    $(".thumbsUp").click(function(){
+    $(".thumbsUp").on('click', function(){
         var dataPK = $(this).attr('data-pk');
         $.ajax({
             headers : { 'X-CSRFToken': "{{csrf_token}}" },
@@ -53,6 +53,7 @@
             },
             success: function () {
                 console.log('Success')
+                location.reload(true)
             }
         })
     })
