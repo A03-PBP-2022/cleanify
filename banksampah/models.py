@@ -8,7 +8,7 @@ PILIHAN_SAMPAH = (
 )
 
 class Bank(models.Model):
-    jenis = models.CharField(max_length=10, choices=PILIHAN_SAMPAH, default='orgnaik')
+    jenis = models.CharField(max_length=10)
     alamat = models.TextField(max_length=100)
     tanggal = models.DateField()
     kontak = models.CharField(max_length=12)
