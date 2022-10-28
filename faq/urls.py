@@ -6,5 +6,5 @@ urlpatterns = [
     path('', faq_index, name='faq_index'),
     path('faq_json/', faq_json, name='faq_json'),
     path('faq_add/', faq_add, name='faq_add'),
-    path('faq_update_thumbsUp/<int:id>', faq_update_thumbsUp, name='faq_update_thumbsUp')
+    path('faq_update_thumbsUp/<int:pk>', faq_update_thumbsUp, name='faq_update_thumbsUp')
 ]
