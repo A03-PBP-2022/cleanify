@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 
 def show_index(request):
 
-	posts = Post.objects.all()
+	posts = Post.objects.all().order_by('-created_timestamp')
 
 	return render(request, "index-blog.html", {
 		'posts': posts
