@@ -5,11 +5,11 @@
 {{ post.title }}
 {% endblock title %}
 
-{% block meta-extra %}
-<script src="{% static 'js/blog/post.js' %}" defer></script>
-{% endblock meta-extra %}
-
 {% block content-blog %}
+
+<script src="https://cdn.jsdelivr.net/combine/npm/marked@4.1.1/marked.min.js,npm/dompurify@2.4.0" defer></script>
+<script src="{% static 'js/blog/post.js' %}" defer></script>
+
 <article itemscope itemtype="http://schema.org/BlogPosting" class="post-article">
 	<header class="post-header article-header">
 		<h1 itemprop="name headline" class="post-title">{{ post.title }}</h1>
@@ -19,17 +19,22 @@
 		{{ post.content | markdown | safe }}
 	</div>
 </article>
+
 <hr>
+
 <section id="comments">
+
 	<h2>Comments</h2>
+
 	<form id="new-comment-form" method="post" action="{% url 'blog:api_create_comment' post.pk %}">
 		<div class="mb-3">
-			<textarea type="text" class="form-control" id="new-comment-input" name="content"></textarea>
+			<textarea type="text" class="form-control expand" id="new-comment-input" name="content"></textarea>
 		</div>
 		<button type="submit" class="btn btn-primary" id="new-comment-submit">Create</button>
 	</form>
+
 	<div id="comments-list" class="mt-4">
-		{% for comment in comments %}<div class="comment card">
+		{% for comment in comments %}<div class="comment card mt-2">
 			<article itemscope itemtype="http://schema.org/Comment" class="card-body">
 				<div class="comment-header">
 					<p class="mb-2 text-bold" itemprop="author">{{ comment.author }}</p>
@@ -41,5 +46,7 @@
 			</article>
 		</div>{% endfor %}
 	</div>
+
 </section>
+
 {% endblock content-blog %}

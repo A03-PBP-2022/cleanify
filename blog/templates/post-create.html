@@ -1,21 +1,26 @@
 {% extends 'base-blog.html' %}
+{% load static %}
 
 {% block title %}
 Create Post
 {% endblock title %}
 
 {% block content-blog %}
+
+<script src="{% static 'js/blog/update-post.js' %}" defer></script>
+
 <h2>Create new post</h2>
-<form id="addForm" method="post" action="{% url 'blog:api_create_post' %}">
-	{% csrf_token %}
+
+<form id="add-form" action="{% url 'blog:api_create_post' %}" data-redirect="{% url 'blog:view_post' post.pk %}">
 	<div class="mb-3">
-		<label for="titleInput" class="form-label">Title</label>
-		<input type="text" class="form-control" id="titleInput" name="title">
+		<label for="title-input" class="form-label fw-semibold">Title</label>
+		<input type="text" class="form-control" id="title-input" name="title">
 	</div>
 	<div class="mb-3">
-		<label for="contentInput" class="form-label">Content</label>
-		<textarea type="text" class="form-control" id="contentInput" name="content"></textarea>
+		<label for="content-input" class="form-label fw-semibold">Content</label>
+		<textarea type="text" class="form-control expand" id="content-input" name="content"></textarea>
 	</div>
-	<button type="submit" class="btn btn-primary" id="addModalSubmit">Create</button>
+	<button type="submit" class="btn btn-primary" id="add-submit">Create</button>
 </form>
+
 {% endblock content-blog %}

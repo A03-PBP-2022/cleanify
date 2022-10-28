@@ -1,4 +1,4 @@
-const form = document.querySelector("#new-comment-form")
+const form = document.querySelector("#add-form")
 
 form.addEventListener("submit", event => {
 	event.preventDefault()

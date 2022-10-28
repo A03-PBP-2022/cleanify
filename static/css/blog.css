@@ -150,3 +150,7 @@ article li * {
 	text-decoration: none;
 	color: unset;
 }
+
+textarea.expand {
+	resize: none;
+}
