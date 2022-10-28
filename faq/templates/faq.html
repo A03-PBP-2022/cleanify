@@ -41,13 +41,17 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+        
     $("#thumbsUp").click(function(){
         console.log(1)
         var dataPK = $(this).data('pk');
         $.ajax({
+            headers : { 'X-CSRFToken': "{{csrf_token}}" },
             type: 'POST',
-            data: { pk: dataPK},
             url: "{% url 'faq:faq_update_thumbsUp' %}",
+            data: { 
+                pk: dataPK
+            },
             success: function () {
                 console.log('Success')
             }

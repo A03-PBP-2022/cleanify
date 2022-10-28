@@ -7,6 +7,7 @@ from django.http import QueryDict
 from django.core import serializers
 from django.contrib.auth.decorators import login_required
 import json
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def faq_index(request):
@@ -20,6 +21,7 @@ def faq_json(request):
 
     return HttpResponse(data, content_type="application/json")
 
+csrf_exempt
 def faq_update_thumbsUp(request):
     pk = request.POST.get('pk')
     faq = FAQ.objects.get(pk=pk)
