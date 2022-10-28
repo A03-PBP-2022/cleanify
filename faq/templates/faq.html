@@ -26,7 +26,7 @@
                     <h5 class="card-header"><strong>{{faq.question}}</strong></h5>
                     <div class="card-body">
                         <p class="card-text">{{faq.answer}}</p>
-                        <a class="btn btn-dark" id="thumbsUp" data-pk="{{faq.pk}}">
+                        <a class="btn btn-dark thumbsUp" data-pk="{{faq.pk}}">
                             <strong>{{faq.thumbsUp}} Thumbs Up</strong>
                         </a>
                     </div>
@@ -42,7 +42,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         
-    $("#thumbsUp").click(function(){
+    $(".thumbsUp").click(function(){
         var dataPK = $(this).attr('data-pk');
         $.ajax({
             headers : { 'X-CSRFToken': "{{csrf_token}}" },
