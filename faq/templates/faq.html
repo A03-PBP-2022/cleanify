@@ -26,7 +26,7 @@
                     <h5 class="card-header"><strong>{{faq.question}}</strong></h5>
                     <div class="card-body">
                         <p class="card-text">{{faq.answer}}</p>
-                        <a class="btn btn-dark" id="thumbsUp">
+                        <a class="btn btn-dark" id="thumbsUp" data-pk="{{faq.pk}}">
                             <strong>{{faq.thumbsUp}} Thumbs Up</strong>
                         </a>
                     </div>
@@ -43,8 +43,7 @@
     <script>
         
     $("#thumbsUp").click(function(){
-        console.log(1)
-        var dataPK = $(this).data('pk');
+        var dataPK = $(this).attr('data-pk');
         $.ajax({
             headers : { 'X-CSRFToken': "{{csrf_token}}" },
             type: 'POST',

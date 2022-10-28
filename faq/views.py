@@ -21,7 +21,6 @@ def faq_json(request):
 
     return HttpResponse(data, content_type="application/json")
 
-csrf_exempt
 def faq_update_thumbsUp(request):
     pk = request.POST.get('pk')
     faq = FAQ.objects.get(pk=pk)
