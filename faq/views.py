@@ -20,8 +20,9 @@ def faq_json(request):
 
     return HttpResponse(data, content_type="application/json")
 
-def faq_update_thumbsUp(request, pk):
-    faq = FAQ.objects.filter(user=request.user).get(pk=pk)
+def faq_update_thumbsUp(request):
+    pk = request.POST.get('pk')
+    faq = FAQ.objects.get(pk=pk)
 
     # update thumbs up
     faq.thumbsUp += 1
@@ -30,7 +31,7 @@ def faq_update_thumbsUp(request, pk):
     # sorting
     data = serializers.serialize('json', FAQ.objects.order_by('-thumbsUp'))
 
-    return HttpResponse(data, content_type="application/json")
+    return HttpResponseRedirect('/faq')
 
 def faq_add(request):
     if request.method == 'POST':

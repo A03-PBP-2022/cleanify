@@ -26,7 +26,7 @@
                     <h5 class="card-header"><strong>{{faq.question}}</strong></h5>
                     <div class="card-body">
                         <p class="card-text">{{faq.answer}}</p>
-                        <a class="btn btn-dark" href="{% url 'faq:faq_update_thumbsUp' faq.pk %}">
+                        <a class="btn btn-dark" id="thumbsUp">
                             <strong>{{faq.thumbsUp}} Thumbs Up</strong>
                         </a>
                     </div>
@@ -40,11 +40,20 @@
     </body>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <!-- <script>
+    <script>
     $("#thumbsUp").click(function(){
-
+        console.log(1)
+        var dataPK = $(this).data('pk');
+        $.ajax({
+            type: 'POST',
+            data: { pk: dataPK},
+            url: "{% url 'faq:faq_update_thumbsUp' %}",
+            success: function () {
+                console.log('Success')
+            }
+        })
     })
 
-    </script> -->
+    </script>
 
 </html>
