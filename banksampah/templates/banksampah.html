@@ -6,96 +6,118 @@
 
 {% block content %}
 
-<script>
-$(document).on('submit', '#post-form',function(e){
-    $.ajax({
-        type:'POST',
-        url: '{% url "banksampah:create_post" %}',
-        data:{
-            alamat:$('#alamat').val(),
-            tanggal:$('#tanggal').val(),
-            kontak:$('#kontak').val(),
-            jenis:$('#jenis').val(),
-            csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
-        },
-        dataType: 'json',
-        success:function(json){
-            alert("Form Accepted");
-            document.getElementById("post-form").reset();
-        }
-    });
-});
 
-</script>
+{% load static %}
 
-<div class = "bank">
+<style>
+    body {
+      align-items: center;
+      background-color: #588157;
+      justify-content: center;
+      display: flex;
+      height: 97vh;
+    }
+    
+    .form {
+      background-color: #344e41;
+      border-radius: 20px;
+      box-sizing: border-box;
+      height: 480px;
+      padding: 20px;
+      width: 320px;
+    }
+    
+    .title{
+      color: #eee;
+      font-family: Tahoma;
+      text-align: center;
+      font-size: 40px;
+      font-weight: 900px;
+      margin-top: 30px;
+    }
+    
+    .input_container{
+      height: 60px;
+      position: relative;
+      width: 100%;
+    }
+    
+    .container_1{
+      margin-top: 35px;
+    }
+    .container_2{
+      margin-top: auto;
+    }
+    
+    input, textarea, select option{
+      background-color: #3a5a40;
+      box-sizing: border-box;
+      border-radius: 12px;
+      border: 0;
+      color: #eee;
+      font-size: 19px;
+      height: 100%;
+      padding: 0px 19px 0px;
+      width: 100%;
+    }
+    
+    .submit{
+      background-color: #344e41;
+      border-radius: 12px;
+      border: 0;
+      box-sizing: border-box;
+      color: #eee;
+      cursor: pointer;
+      text-align: center;
+      font-size: 18px;
+      height: 50px;
+      margin-top: 38px;
+      outline: 0;
+      width: 100%;
+    }
+    .submit:active{
+      background-color: rgb(3, 97, 5);
+    }
+    .submit:hover{
+      box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+      transform: translateY(-0.25em);
+    }
+    
+    </style>
 
-    <h1>Form Bank Sampah</h1>
+<body>
 
-        <form method="POST" >
-            {% csrf_token %}
-            <table>
-
-                <tr>
-                    <td>Date: </td>
-                    <td aria-placeholder="MM/DD/YYYY">{{form.tanggal}}</td>
-                </tr>
-
-                <tr>
-                    <td>Contact: </td>
-                    <td aria-placeholder="Telephone Number">{{form.kontak}}</td>
-                </tr>
-
-                <tr>
-                    <td>Adress: </td>
-                    <td aria-placeholder="Pick-up Address">{{form.alamat}}</td>
-                </tr>
-
-                <tr>
-                    <td for="jenis">Type: </td>
-                    <td>{{form.jenis}}</td>
-                </tr>
-
-                <tr>
-                    <td></td>
-                    <td><button id="button" type="submit" class="btn btn-success">Submit</button><td>
-                </tr>
-            </table>
-        </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-        </ul>
-    {% endif %}
-
-    <!-- <form method="POST" id="post-form">
+    <div class="form">
+    <div class="title">Form Bank Sampah</div>
+      <form method="POST">
         {% csrf_token %}
-        <div class="form-group">
-            <label>Address</label>
-            <input type="text" class="form-control" id="alamat" placeholder="Pick-Up Address" maxlength="20"></input>
-        </div>
-        <div class="form-group">
-            <label>Date</label>
-            <input class="form-control" id="tanggal" placeholder="MM/DD/YYYY"></input>
-        </div>
-        <div class="form-group">
-            <label>Contact</label>
-            <input class="form-control" id="kontak" placeholder="Telephone Number" maxlength="12"></input>
-        </div>
-        <div class="btn-group">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Type
-            </button>
-            <div class="dropdown-menu">
-              <button class="dropdown-item" href="#">Organik</button>
-              <button class="dropdown-item" href="#">Anorganik</button>
-              <button class="dropdown-item" href="#">B3</button>
-            </div>
+        <div class="input-container container_1">
+            <label for="tanggal">Date</label>
+            <input type="text" name="tanggal" placeholder="YYYY-MM-DD"required id="tanggal">
+            <div class="cut"></div>
           </div>
-        <button type="submit" class="btn btn-success">Submit</button>
-      </form> -->
+          <label for="kontak">Contact</label>
+          <div class="input-container container_2">
+            <input name="kontak" placeholder="Telephone Number" required id="kontak"></input>
+          </div>
+          <label for="alamat">Address</label>
+          <div class="input-container container_3">
+            <textarea name="alamat" placeholder="Address" required id="alamat"></textarea>
+          </div>
+          <div class="input-container container_4">
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenis">
+                <option selected>Type</option>
+                <option value="1">Organik</option>
+                <option value="2">Anorganik</option>
+                <option value="3">B3</option>
+              </select>
+          </div>
 
+    
+        <button type="text" class="submit">Submit</button>
+    </form>
+    </div>
+    <script src="{% static 'main.js' %}"></script>
+    <script src="{% static 'banksampahstyle.css' %}"></script>
+    </body>
 {% endblock content %}
