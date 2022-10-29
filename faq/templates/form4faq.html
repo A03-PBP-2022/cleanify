@@ -12,6 +12,7 @@
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
         crossorigin="anonymous"></script>
     {% load static %}
+    <link rel="stylesheet" href="{% static 'css/faq.css' %}"> 
     <title>Add Cleanify FAQ</title>
     <style></style>
 </head>
@@ -20,15 +21,18 @@
         <h1><br><strong>Add Cleanify FAQ</strong></h1><br>
         <form action="" method="POST">
             {% csrf_token %}
-            <table>  
-                {{ form.as_table }}  
-                <tr>  
-                    <td></td>
-                    <td><button type="submit" class="btn btn-success" id="btn-add">Add FAQ</button></td>  
-                </tr>  
-            </table>
+            <div class="mb-3">
+                <label for="question" class="form-label"><strong>Question</strong></label>
+                {{form.q}}
+            </div>
+            <div class="mb-3">
+                <label for="answer" class="form-label"><strong>Answer</strong></label>
+                {{form.a}}
+            </div>
+            <button type="submit" class="btn btn-success" id="btn-add">Add FAQ</button>
         </form>
     </div>
     
 </body>
+<script src="{% static 'faq.css' %}"></script>
 </html>

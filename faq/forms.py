@@ -18,5 +18,5 @@ class FAQForm(forms.ModelForm):
         'class':'form-control'
     }
 
-    q = forms.CharField(label="question",required=True, max_length=400, widget=forms.TextInput(attrs=q_attrs))
-    a = forms.CharField(label="answer",required=True, widget=forms.Textarea(attrs=a_attrs))
+    q = forms.CharField(label="Question",required=True, max_length=400, widget=forms.TextInput(attrs=q_attrs))
+    a = forms.CharField(label="Answer",required=True, widget=forms.Textarea(attrs=a_attrs))
