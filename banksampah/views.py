@@ -24,32 +24,14 @@ def create_post(request):
         new_project.save()
     return render(request, 'banksampah.html', context)
 
-# def form_bank(request):
-#     context ={}
-#     context['form']= FormBank()
-#     return render(request, "banksampah.html", context)
+def show_bank(request):
+    data_bank = Bank.objects.all()
+    context = {
+    'list_bank': data_bank,
+    }
+    return render(request, "showbank.html", context)
 
-# def create_post(request):
-    # posts = Bank.objects.all()
-    # response_data = {}
-
-    # if request.POST.get('action') == 'post':
-    #     jenis = request.POST.get('jenis')
-    #     alamat = request.POST.get('alamat')
-    #     tanggal = request.POST.get('tanggal')
-    #     kontak = request.POST.get('kontak')
-
-    #     response_data['jenis'] = jenis
-    #     response_data['alamat'] = alamat
-    #     response_data['tanggal'] = tanggal
-    #     response_data['kontak'] = kontak
-
-    #     Bank.objects.create(
-    #         jenis = jenis,
-    #         alamat = alamat,
-    #         tanggal = tanggal,
-    #         kontak = kontak,
-    #         )
-    #     return JsonResponse(response_data)
-
-    # return render(request, 'banksampah.html', {'posts':posts})
+def delete_bank(request, id):
+    bank = Bank.objects.get(id=id)
+    bank.delete()
+    return show_bank(request)
