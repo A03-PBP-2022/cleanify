@@ -6,7 +6,7 @@ from django.http import JsonResponse
 
 
 # Create your views here.
-def create_post(request):
+def create_bank(request):
     context ={}
     context['form']= FormBank()
     if request.method == 'POST':

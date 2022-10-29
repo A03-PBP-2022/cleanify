@@ -26,7 +26,7 @@
                     <p id="tanggal">{{ bank.tanggal }}</p>
                 </div>
                 <div class="card-link-wrapper">
-                    <form action="{% url 'banksampah:delete_bank' id=bank.id %}" method="post">
+                    <form action="{% url 'banksampah:delete' id=bank.id %}" method="post">
                         {% csrf_token %}
                         <button style="margin-left: 4px;" class="btn btn-danger" type="submit"><i class="btn-danger"></i>Delete</button>
                     </form>
