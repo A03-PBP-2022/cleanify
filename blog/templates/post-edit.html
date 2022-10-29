@@ -1,0 +1,26 @@
+{% extends 'base-blog.html' %}
+{% load static %}
+
+{% block title %}
+Edit Post
+{% endblock title %}
+
+{% block content-blog %}
+
+<script src="{% static 'js/blog/update-post.js' %}" defer></script>
+
+<h2>Edit new post</h2>
+
+<form id="add-form" action="{% url 'blog:api_edit_post' post.pk %}" data-redirect="{% url 'blog:view_post' post.pk %}">
+	<div class="mb-3">
+		<label for="title-input" class="form-label fw-semibold">Title</label>
+		<input type="text" class="form-control" id="title-input" name="title" value="{{ post.title }}">
+	</div>
+	<div class="mb-3">
+		<label for="content-input" class="form-label fw-semibold">Content</label>
+		<textarea type="text" class="form-control expand" id="content-input" name="content">{{ post.content }}</textarea>
+	</div>
+	<button type="submit" class="btn btn-primary" id="add-submit">Edit</button>
+</form>
+
+{% endblock content-blog %}

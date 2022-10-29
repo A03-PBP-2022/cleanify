@@ -1,0 +1,156 @@
+article blockquote {
+	padding: 0 1em;
+	color: var(--secondary);
+	border-left: 0.25em solid #bbc2c8;
+}
+
+article blockquote> :first-child {
+	margin-top: 0;
+}
+
+article blockquote> :last-child {
+	margin-bottom: 0;
+}
+
+article code,
+article tt {
+	padding: 0.2em 0.4em;
+	margin: 0;
+	font-size: 85%;
+	border-radius: .25rem;
+	color: inherit;
+}
+
+article code br,
+article tt br {
+	display: none;
+}
+
+article pre {
+	word-wrap: normal;
+}
+
+article pre>code {
+	padding: 0;
+	margin: 0;
+	font-size: 100%;
+	word-break: normal;
+	white-space: pre;
+	background: transparent;
+	border: 0;
+}
+
+article pre {
+	padding: 16px;
+	border-radius: 6px;
+}
+
+article .highlight>pre>code {
+	background-color: transparent !important;
+}
+
+article pre {
+	background-color: #f8f9fa;
+}
+
+article code,
+article kbd,
+article tt,
+article samp {
+	background-color: #eff1f3;
+}
+
+article table {
+	display: block;
+	width: 100%;
+	overflow: auto;
+}
+
+article table th,
+article table td {
+	padding: 6px 13px;
+	border: 1px solid #dee2e6;
+}
+
+article table tr {
+	border-top: 1px solid #d2d8dd;
+}
+
+article table tr:nth-child(2n) {
+	background-color: #f5f6f8;
+}
+
+article table tr>th:empty {
+	border-color: transparent;
+	border-bottom-color: #dee2e6;
+	padding: 0;
+}
+
+article table img {
+	background-color: transparent;
+}
+
+article img {
+	max-width: 100%;
+}
+
+article h1,
+article h2,
+article h3,
+article h4,
+article h5,
+article h6 {
+	margin-top: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+article blockquote,
+article details,
+article dl,
+article ol,
+article p,
+article pre,
+article table,
+article ul,
+article .highlight {
+	margin-bottom: 1rem;
+}
+
+article h1:first-child {
+	margin-top: 0;
+}
+
+article > :last-child,
+article .article-content :last-child {
+	margin-bottom: 0;
+}
+
+article li * {
+	margin-bottom: 0.5rem;
+}
+
+.post-article .article-header {
+	text-align: center;
+}
+
+.post-article .post-title {
+	font-weight: 700;
+	font-size: 3rem;
+}
+
+.post-list .post-list-read-more {
+	text-decoration: none;
+}
+
+.post-list .post-title {
+	margin-bottom: 0.5rem;
+}
+
+.post-list .post-title a {
+	text-decoration: none;
+	color: unset;
+}
+
+textarea.expand {
+	resize: none;
+}
