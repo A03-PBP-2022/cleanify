@@ -1,15 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.views import redirect_to_login
-from blog.models import Post, Comment
 from django.contrib.auth.decorators import login_required, permission_required
+from django.core.paginator import Paginator, EmptyPage
+from blog.models import Post, Comment
 
 def show_index(request):
 
 	posts = Post.objects.all().order_by('-created_timestamp')
+	paginator = Paginator(posts, 10)
+	page_number = request.GET.get('page') or 1
 
 	return render(request, "index-blog.html", {
-		'posts': posts
+		'posts': paginator.get_page(page_number)
 	})
 
 def view_post(request, id):
