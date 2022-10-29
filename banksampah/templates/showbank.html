@@ -1,179 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Show Bank Sampah</title>
+<link rel="stylesheet" href="{% static 'css/banksampah/list.css' %}">
+{% endblock meta %}
 
 {% block content %}
 <style>
-    :root {
-        --blue: #ec0e8f;
-        --white: #fff;
-        --purple: #3a5a40;
-    }
 
-    h5 {
-        color: white;
-    }
-
-    h4 {
-        font-weight: bold;
-    }
-
-
-    a:link {
-        color: var(--white);
-        background-color: transparent;
-        text-decoration: none;
-    }
-
-    a:visited {
-        color: var(--white);
-        background-color: transparent;
-        text-decoration: none;
-    }
-
-    a:hover {
-        color: var(--white);
-        background-color: transparent;
-        text-decoration: none;
-    }
-
-    * {
-        box-sizing: border-box;
-        padding: 0;
-        margin: 0;
-    }
-
-    body {
-        font: 16px / 24px "Rubik", sans-serif;
-        color: var(--white);
-        background-color: #588157;
-        margin: 50px 0;
-    }
-
-    .container {
-        max-width: 1400px;
-        max-height: 1400px;
-        padding: 0 16px;
-        margin: 0 auto;
-    }
-
-    h2 {
-        padding-top: 20px;
-        font-weight: bolder;
-        color: #fff;
-        text-align: center;
-    }
-
-    h5.text-muted {
-        margin-left: 160px;
-        text-align: center;
-        color: #222;
-        font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    }
-
-    .cards {
-        padding: 25px 0px;
-        list-style: none;
-    }
-
-    .card {
-        display: flex;
-        flex-direction: column;
-        flex: 0 0 100%;
-        padding: 20px;
-        background-color: #344e41;
-        border-radius: 12px;
-        transition: 0.3s;
-    }
-
-    .card:not(:last-child) {
-        margin-right: 10px;
-    }
-
-    .card:hover {
-        color: var(--white);
-        background: var(--purple);
-    }
-
-    .card .card-title {
-        font-size: 23px;
-    }
-
-    .card .card-content {
-        margin: 20px 0;
-        max-width: 85%;
-        max-height: 85%;
-    }
-
-    .card .card-link-wrapper {
-        margin-top: auto;
-    }
-
-    .card .card-link {
-        display: inline-block;
-        text-decoration: none;
-        color: white;
-        background: var(--blue);
-        padding: 6px 12px;
-        border-radius: 8px;
-        transition: background 0.2s;
-    }
-
-    .card:hover .card-link {
-        background: var(--purple);
-    }
-
-    @media (min-height: 500px) {
-        .card {
-            flex-basis: calc(50% - 10px);
-        }
-
-        .card:not(:last-child) {
-            margin-right: 20px;
-        }
-    }
-
-    @media (min-height: 700px) {
-        .card {
-            flex-basis: calc(calc(100% / 3) - 20px);
-        }
-
-        .card:not(:last-child) {
-            margin-right: 30px;
-        }
-    }
-
-    @media (min-height: 1100px) {
-        .card {
-            flex-basis: calc(25% - 30px);
-        }
-
-        .card:not(:last-child) {
-            margin-right: 40px;
-        }
-    }
 </style>
 
-<div class="container">
+<div class="container py-4">
     <h2>Show Bank Sampah</h2>
-    <ul class="cards">
+    <div class="cards row g-2">
         {% for bank in list_bank %}
-        <li class="card">
-            <div>
-                <h4><label for="jenis">Type</label></h4>
-                <p id="jenis">{{ bank.jenis }}</p>
-                <h4><label for="alamat">Address</label></h4>
-                <p id="alamat"><span style="font-weight:normal">{{ bank.alamat }}</p>
-                <h4><label for="tanggal">Date</label></h4>
-                <p id="tanggal">{{ bank.tanggal }}</p>
+        <div class="col-12 col-md-6 col-xl-4">
+            <div class="card">
+                <div>
+                    <h4><label for="jenis">Type</label></h4>
+                    <p id="jenis">{{ bank.jenis }}</p>
+                    <h4><label for="alamat">Address</label></h4>
+                    <p id="alamat"><span style="font-weight:normal">{{ bank.alamat }}</p>
+                    <h4><label for="tanggal">Date</label></h4>
+                    <p id="tanggal">{{ bank.tanggal }}</p>
+                </div>
+                <div class="card-link-wrapper">
+                    <form action="{% url 'banksampah:delete_bank' id=bank.id %}" method="post">
+                        {% csrf_token %}
+                        <button style="margin-left: 4px;" class="btn btn-danger" type="submit"><i class="btn-danger"></i>Delete</button>
+                    </form>
+                </div>
             </div>
-            <div class="card-link-wrapper">
-                <form action="{% url 'banksampah:delete_bank' id=bank.id %}" method="post"></form>
-                {% csrf_token %}
-                <button style="margin-left: 4px;" class="btn btn-danger" type="submit"><i class="btn-danger"></i>Delete</button>
-                </form>
-
-        </li>
+    
+        </div>
         {% endfor %}
-    </ul>
+    </div>
 
 </div>
 

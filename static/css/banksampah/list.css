@@ -1,0 +1,115 @@
+:root {
+	--blue: #ec0e8f;
+	--white: #fff;
+	--purple: #3a5a40;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    background-color: #588157;
+    flex-grow: 1;
+}
+
+main h5 {
+	color: white;
+}
+
+main h4 {
+	font-weight: bold;
+}
+
+
+main a:link {
+	color: var(--white);
+	background-color: transparent;
+	text-decoration: none;
+}
+
+main  a:visited {
+	color: var(--white);
+	background-color: transparent;
+	text-decoration: none;
+}
+
+main a:hover {
+	color: var(--white);
+	background-color: transparent;
+	text-decoration: none;
+}
+
+main {
+	/* font: 16px / 24px "Rubik", sans-serif; */
+	color: var(--white);
+	background-color: #588157;
+	/* margin: 50px 0; */
+}
+
+main h2 {
+	padding-top: 20px;
+	font-weight: bolder;
+	color: #fff;
+	text-align: center;
+}
+
+main h5.text-muted {
+	margin-left: 160px;
+	text-align: center;
+	color: #222;
+}
+
+.cards {
+	padding: 25px 0px;
+	list-style: none;
+}
+
+.card {
+	/* display: flex; */
+	/* flex-direction: column; */
+	/* flex: 0 0 100%; */
+	padding: 20px;
+	background-color: #344e41;
+	border-radius: 12px;
+	transition: 0.3s;
+}
+
+/* .card:not(:last-child) {
+	margin-right: 10px;
+} */
+
+.card:hover {
+	color: var(--white);
+	background: var(--purple);
+}
+
+.card .card-title {
+	font-size: 23px;
+}
+
+.card .card-content {
+	margin: 20px 0;
+	max-width: 85%;
+	max-height: 85%;
+}
+
+.card .card-link-wrapper {
+	margin-top: auto;
+}
+
+.card .card-link {
+	display: inline-block;
+	text-decoration: none;
+	color: white;
+	background: var(--blue);
+	padding: 6px 12px;
+	border-radius: 8px;
+	transition: background 0.2s;
+}
+
+.card:hover .card-link {
+	background: var(--purple);
+}

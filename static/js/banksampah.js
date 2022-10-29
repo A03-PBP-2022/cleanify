@@ -1,6 +1,3 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-
 $(document).on('submit', '#post-form',function(e){
     $.ajax({
         type:'POST',
