@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block meta %}
+<title>Bank Sampah</title>
+{% endblock meta %}
+
+{% block content %}
+
+
+{% load static %}
+
+<head>
+  <link rel="stylesheet" href="{% static 'css/banksampahstyle.css' %}">
+  <link rel="stylesheet" href="{% static 'js/banksampah.js' %}">
+</head>
+
+<body>
+
+    <div class="form">
+    <div class="title">Form Bank Sampah</div>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="input-container container_1">
+            <label for="tanggal">Date</label>
+            <input type="text" name="tanggal" placeholder="YYYY-MM-DD"required id="tanggal">
+            <div class="cut"></div>
+          </div>
+          <label for="kontak">Contact</label>
+          <div class="input-container container_2">
+            <input name="kontak" placeholder="Telephone Number" required id="kontak" maxlength="12"></input>
+          </div>
+          <label for="alamat">Address</label>
+          <div class="input-container container_3">
+            <textarea name="alamat" placeholder="Address" required id="alamat"></textarea>
+          </div>
+          <div class="input-container container_4">
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenis">
+                <option selected>Type</option>
+                <option value="Organik">Organik</option>
+                <option value="Anorganik">Anorganik</option>
+                <option value="B3">B3</option>
+              </select>
+          </div>
+
+    
+        <button type="text" class="submit">Submit</button>
+    </form>
+    </div>
+    <script src="{% static 'main.js' %}"></script>
+    <script src="{% static 'banksampahstyle.css' %}"></script>
+    </body>
+{% endblock content %}
