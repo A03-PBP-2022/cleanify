@@ -15,7 +15,7 @@ body {
     width: 320px;
 }
 
-.title{
+.title {
     color: #eee;
     font-family: Tahoma;
     text-align: center;
@@ -24,20 +24,23 @@ body {
     margin-top: 30px;
 }
 
-.input_container{
+.input_container {
     height: 60px;
     position: relative;
     width: 100%;
 }
 
-.container_1{
+.container_1 {
     margin-top: 35px;
 }
-.container_2{
+
+.container_2 {
     margin-top: auto;
 }
 
-input, textarea, select option{
+input,
+textarea,
+select option {
     background-color: #3a5a40;
     box-sizing: border-box;
     border-radius: 12px;
@@ -49,7 +52,7 @@ input, textarea, select option{
     width: 100%;
 }
 
-.submit{
+.submit {
     background-color: #344e41;
     border-radius: 12px;
     border: 0;
@@ -63,10 +66,12 @@ input, textarea, select option{
     outline: 0;
     width: 100%;
 }
-.submit:active{
+
+.submit:active {
     background-color: rgb(3, 97, 5);
 }
-.submit:hover{
+
+.submit:hover {
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
 }
