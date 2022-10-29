@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark navbar-expand-xl bg-cleanify">
 	<div class="container">
-		<a class="navbar-brand" href="#"><i class="bi bi-trash-fill"></i> Cleanify</a>
+		<a class="navbar-brand" href='{% url "index:index_page" %}'><i class="bi bi-trash-fill"></i> Cleanify</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -15,7 +15,7 @@
 						<a class="nav-link" href="#">Lapor Sampah</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Bank Sampah</a>
+						<a class="nav-link" href='{% url "banksampah:create" %}'>Bank Sampah</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">Blog</a>
