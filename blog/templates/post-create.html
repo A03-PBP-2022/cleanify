@@ -11,7 +11,7 @@ Create Post
 
 <h2>Create new post</h2>
 
-<form id="add-form" action="{% url 'blog:api_create_post' %}" data-redirect="{% url 'blog:view_post' post.pk %}">
+<form id="add-form" action="{% url 'blog:api_create_post' %}" data-redirect="{% url 'blog:view_post' 0 %}">
 	<div class="mb-3">
 		<label for="title-input" class="form-label fw-semibold">Title</label>
 		<input type="text" class="form-control" id="title-input" name="title">

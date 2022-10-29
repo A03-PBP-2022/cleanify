@@ -5,7 +5,7 @@ form.addEventListener("submit", event => {
 	const formData = new FormData(event.target)
 	const formProps = Object.fromEntries(formData)
 	const actionUrl = event.target.getAttribute('action')
-	const redirectUrl = event.target.dataset.redirect || window.location.href
+	let redirectUrl = event.target.dataset.redirect || window.location.href
 	fetch(actionUrl, {
 		method: 'POST',
 		body: JSON.stringify(formProps),
@@ -15,7 +15,11 @@ form.addEventListener("submit", event => {
 	})
 		.then(response => {
 			if (response.status === 200 || response.status === 201) {
-				window.location = redirectUrl
+				return response.json()
 			}
+			throw Error()
+		})
+		.then(post => {
+			window.location = redirectUrl.replace('0', post.pk)
 		})
 })
