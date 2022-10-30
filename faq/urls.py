@@ -1,10 +1,10 @@
 from django.urls import path
-from .views import faq_index, faq_json, faq_add, faq_update_thumbsUp
+from .views import index, json, add, update_thumbsUp
 
 app_name = 'faq'
 urlpatterns = [
-    path('', faq_index, name='faq_index'),
-    path('json/', faq_json, name='faq_json'),
-    path('add/', faq_add, name='faq_add'),
-    path('thumbsup', faq_update_thumbsUp, name='faq_update_thumbsUp')
+    path('', index, name='index'),
+    path('json/', json, name='json'),
+    path('add/', add, name='add'),
+    path('thumbsup', update_thumbsUp, name='update_thumbsUp')
 ]

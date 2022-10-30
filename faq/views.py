@@ -10,18 +10,18 @@ import json
 from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
-def faq_index(request):
+def index(request):
     faqs = FAQ.objects.order_by('-thumbsUp')
     context = {'faqs': faqs}
     return render(request, 'faq.html', context)
 
-def faq_json(request):
+def json(request):
     # sort according to thumbs up
     data = serializers.serialize('json', FAQ.objects.order_by('-thumbsUp'))
 
     return HttpResponse(data, content_type="application/json")
 
-def faq_update_thumbsUp(request):
+def update_thumbsUp(request):
     pk = request.POST.get('pk')
     faq = FAQ.objects.get(pk=pk)
 
@@ -34,7 +34,7 @@ def faq_update_thumbsUp(request):
 
     return HttpResponseRedirect('/faq')
 
-def faq_add(request):
+def add(request):
     if request.method == 'POST':
         form = FAQForm(request.POST)
         if form.is_valid():

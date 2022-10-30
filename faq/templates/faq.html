@@ -24,7 +24,7 @@
         <br>
         {% endfor %}
     </div>
-    <a class="btn btn-success " href="{% url 'faq:faq_add' %}">
+    <a class="btn btn-success " href="{% url 'faq:add' %}">
         <strong>Add New Question</strong>
     </a>
 
@@ -36,7 +36,7 @@
         $.ajax({
             headers: { 'X-CSRFToken': window.CSRF_TOKEN },
             type: 'POST',
-            url: "{% url 'faq:faq_update_thumbsUp' %}",
+            url: "{% url 'faq:update_thumbsUp' %}",
             data: {
                 pk: dataPK
             },
