@@ -12,12 +12,7 @@ main {
     display: flex;
 }
 
-h1{
-    font-size: 40px;
-    font-weight: 900px;
-}
-
-a:hover {
+main a:hover {
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
 } 
