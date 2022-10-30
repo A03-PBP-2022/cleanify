@@ -2,31 +2,31 @@
 {% load static %}
 
 {% block meta %}
-<title>Bank Sampah</title>
+<title>Bank Sampah - Cleanify</title>
 <link rel="stylesheet" href="{% static 'css/banksampah/index.css' %}">
 <script src="{% static 'js/banksampah.js' %}"></script>
 {% endblock meta %}
 
 {% block content %}
+<form method="POST">
 
-<div class="form">
-    <div class="title">Form Bank Sampah</div>
-    <form method="POST">
+    <div class="form text-light">
+        <h1 class="title fw-bold text-center">Form Bank Sampah</h1>
         {% csrf_token %}
-        <div class="input-container container_1">
+        <div class="mt-2">
             <label for="tanggal">Date</label>
-            <input type="text" name="tanggal" placeholder="YYYY-MM-DD" required id="tanggal">
+            <input type="date" name="tanggal" placeholder="YYYY-MM-DD" required id="tanggal">
             <div class="cut"></div>
         </div>
-        <label for="kontak">Contact</label>
-        <div class="input-container container_2">
+        <div class="mt-2">
+            <label for="kontak">Contact</label>
             <input name="kontak" placeholder="Telephone Number" required id="kontak" maxlength="12"></input>
         </div>
-        <label for="alamat">Address</label>
-        <div class="input-container container_3">
+        <div class="mt-2">
+            <label for="alamat">Address</label>
             <textarea name="alamat" placeholder="Address" required id="alamat"></textarea>
         </div>
-        <div class="input-container container_4">
+        <div class="mt-2">
             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="jenis">
                 <option selected>Type</option>
                 <option value="Organik">Organik</option>
@@ -34,8 +34,10 @@
                 <option value="B3">B3</option>
             </select>
         </div>
-        <button type="text" class="submit">Submit</button>
-    </form>
-</div>
+    </div>
+    <button class="btn btn-submit mt-4">Submit</button>
+    <a href='{% url "banksampah:show" %}' class="btn btn-submit d-inline-block mt-2">Show My Bank</a>
+
+</form>
 
 {% endblock content %}

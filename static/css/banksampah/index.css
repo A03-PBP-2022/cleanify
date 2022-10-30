@@ -16,32 +16,12 @@ main {
     background-color: #344e41;
     border-radius: 20px;
     box-sizing: border-box;
-    height: 480px;
     padding: 20px;
     width: 320px;
 }
 
 .title {
-    color: #eee;
-    font-family: Tahoma;
-    text-align: center;
     font-size: 40px;
-    font-weight: 900px;
-    margin-top: 30px;
-}
-
-.input_container {
-    height: 60px;
-    position: relative;
-    width: 100%;
-}
-
-.container_1 {
-    margin-top: 35px;
-}
-
-.container_2 {
-    margin-top: auto;
 }
 
 input,
@@ -51,33 +31,29 @@ select option {
     box-sizing: border-box;
     border-radius: 12px;
     border: 0;
-    color: #eee;
+    color: #fff;
     font-size: 19px;
     height: 100%;
     padding: 0px 19px 0px;
     width: 100%;
 }
 
-.submit {
+.btn-submit {
     background-color: #344e41;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    cursor: pointer;
-    text-align: center;
+    color: #fff;
     font-size: 18px;
-    height: 50px;
-    margin-top: 38px;
-    outline: 0;
+    padding-top: 14px;
+    padding-bottom: 14px; 
     width: 100%;
 }
 
-.submit:active {
+.btn-submit:active {
     background-color: rgb(3, 97, 5);
 }
 
-.submit:hover {
+.btn-submit:hover {
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
     transform: translateY(-0.25em);
+    background-color: #344e41;
+    color: #fff;
 }
