@@ -1,1 +1,21 @@
-/* Custom styles here... */
+:root {
+	--bs-cleanify: rgb(27, 149, 92);
+	--bs-cleanify-rgb: 27, 149, 92
+}
+
+.bg-cleanify {
+	--bs-bg-opacity: 1;
+	background-color: rgba(var(--bs-cleanify-rgb),var(--bs-bg-opacity)) !important;
+}
+
+.text-cleanify {
+	--bs-text-opacity: 1;
+	color: rgba(var(--bs-cleanify-rgb),var(--bs-bg-opacity)) !important;
+}
+
+.text-bg-cleanify {
+	--bs-text-opacity: 1;
+	color: #fff !important;
+	--bs-bg-opacity: 1;
+	background-color: rgba(var(--bs-cleanify-rgb),var(--bs-bg-opacity)) !important;
+}

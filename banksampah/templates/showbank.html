@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Your Bank Sampah - Cleanify</title>
+<link rel="stylesheet" href="{% static 'css/banksampah/list.css' %}">
+{% endblock meta %}
+
+{% block content %}
+<style>
+
+</style>
+
+<div class="container py-4">
+    <h2>Your Bank Sampah</h2>
+    <div class="cards row g-2">
+        {% for bank in list_bank %}
+        <div class="col-12 col-md-6 col-xl-4">
+            <div class="card">
+                <div>
+                    <h4><label for="jenis">Type</label></h4>
+                    <p id="jenis">{{ bank.jenis }}</p>
+                    <h4><label for="alamat">Address</label></h4>
+                    <p id="alamat"><span style="font-weight:normal">{{ bank.alamat }}</p>
+                    <h4><label for="tanggal">Date</label></h4>
+                    <p id="tanggal">{{ bank.tanggal }}</p>
+                </div>
+                <div class="card-link-wrapper">
+                    <form action="{% url 'banksampah:delete' id=bank.id %}" method="post">
+                        {% csrf_token %}
+                        <button style="margin-left: 4px;" class="btn btn-danger" type="submit"><i class="btn-danger"></i>Delete</button>
+                    </form>
+                </div>
+            </div>
+    
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock content %}
