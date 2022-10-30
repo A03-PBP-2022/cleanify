@@ -129,26 +129,13 @@ article li * {
 	margin-bottom: 0.5rem;
 }
 
-.post-article .article-header {
-	text-align: center;
-}
-
-.post-article .post-title {
-	font-weight: 700;
-	font-size: 3rem;
-}
-
-.post-list .post-list-read-more {
-	text-decoration: none;
-}
-
-.post-list .post-title {
-	margin-bottom: 0.5rem;
-}
-
-.post-list .post-title a {
-	text-decoration: none;
-	color: unset;
+.post-list .post-content {
+	-webkit-line-clamp: 5;
+	line-clamp: 5;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
 }
 
 textarea.expand {

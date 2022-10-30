@@ -11,8 +11,8 @@
 <script src="{% static 'js/blog/post.js' %}" defer></script>
 
 <article itemscope itemtype="http://schema.org/BlogPosting" class="post-article">
-	<header class="post-header article-header">
-		<h1 itemprop="name headline" class="post-title">{{ post.title }}</h1>
+	<header class="post-header article-header text-center">
+		<h1 itemprop="name headline" class="post-title fw-bold display-4">{{ post.title }}</h1>
 		<p class="text-muted post-info">
 			<i class="bi bi-calendar-fill"></i> <time datetime='{{ post.timestamp | date:"c" }}' itemprop="datePublished">{{ post.created_timestamp | date:"d F Y" }}</time>
 			• <i class="bi bi-person-fill"></i> <span itemprop="author">{{ post.author }}</span>
