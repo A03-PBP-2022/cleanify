@@ -20,12 +20,12 @@ class Migration(migrations.Migration):
             old_name='edited_timestamp',
             new_name='modified_timestamp'
         ),
-        migrations.AddField(
+        migrations.AlterField(
             model_name='comment',
             name='modified_timestamp',
             field=models.DateTimeField(auto_now=True),
         ),
-        migrations.AddField(
+        migrations.AlterField(
             model_name='post',
             name='modified_timestamp',
             field=models.DateTimeField(auto_now=True),
