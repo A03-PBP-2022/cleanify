@@ -1,6 +1,7 @@
 const commentsListEl = document.querySelector('#comments-list')
 const commentTemplate = document.querySelector('#template-comment').content
 const commentEditTemplate = document.querySelector('#template-comment-edit').content
+const noCommentsPlaceholderEl = document.querySelector("#comments-no-comment")
 let loadedComments = []
 let hasDeletedComment = false
 let currentPage = 1
@@ -27,82 +28,84 @@ const loadComments = (page = currentPage) => {
 				commentEl.querySelector(".comment-content").innerHTML = marked.parse(comment.fields.content)
 				commentEl.querySelector(".comment-timestamp").textContent = new Date(comment.fields.created_timestamp).toLocaleDateString('en-uk', { year: "numeric", month: "long", day: "numeric", timeZone: "UTC" })
 
-				if (!comment.perms.edit) {
+				if (comment.perms.edit) {
+					commentEl.querySelector(".comment-edit").addEventListener('click', event => {
+						event.preventDefault()
+						const commentContentEl = commentEl.querySelector('article')
+						const commentEditEl = commentEditTemplate.cloneNode(true).firstElementChild
+						commentEl.removeChild(commentContentEl)
+						commentEl.appendChild(commentEditEl)
+	
+						const commentEditSubmitEl = commentEditEl.querySelector(".comment-edit-submit")
+						const commentEditInputEl = commentEditEl.querySelector(".comment-edit-input")
+						commentEditInputEl.innerHTML = comment.fields.content
+						editUrl = commentEditSubmitEl.dataset.action.replace('0', comment.pk)
+	
+						commentEditSubmitEl.addEventListener('click', event => {
+							event.preventDefault()
+							fetch(editUrl, {
+								method: 'POST',
+								body: JSON.stringify({
+									content: commentEditInputEl.value
+								}),
+								headers: {
+									'X-CSRFToken': window.CSRF_TOKEN
+								}
+							})
+								.then(response => {
+									if (response.status === 200 || response.status === 201) {
+										commentEl.removeChild(commentEditEl)
+										commentEl.appendChild(commentContentEl)
+										return response.json()
+									}
+									throw Error()
+								})
+								.then(newComment => {
+									comment = newComment
+									commentEl.querySelector(".comment-content").innerHTML = marked.parse(comment.fields.content)
+								})
+						
+						})
+					})
+				} else {
 					commentEl.querySelector(".comment-edit-part").remove()
 				}
 
-				if (!comment.perms.delete) {
-					commentEl.querySelector(".comment-delete-part").remove()
-				}
-
-				const deleteButton = commentEl.querySelector(".comment-delete")
-				const deleteUrl = deleteButton.dataset.action.replace('0', comment.pk)
-				delete deleteButton.dataset.action
-
-				commentEl.querySelector(".comment-delete").addEventListener('click', event => {
-					event.preventDefault()
-					fetch(deleteUrl, {
-						method: 'DELETE',
-						headers: {
-							'X-CSRFToken': window.CSRF_TOKEN
-						}
-					})
-						.then(response => {
-							if (response.status === 200 || response.status === 201) {
-								// loadComments()
-								commentEl.remove()
-								hasDeletedComment = true
-								isLastPage = false
-								loadedComments = loadedComments.filter(id => id !== comment.pk)
-								currentPage = Math.max(Math.ceil(loadedComments.length / 10), 1)
-							}
-						})
-				})
-
-				commentEl.querySelector(".comment-edit").addEventListener('click', event => {
-					event.preventDefault()
-					const commentContentEl = commentEl.querySelector('article')
-					const commentEditEl = commentEditTemplate.cloneNode(true).firstElementChild
-					commentEl.removeChild(commentContentEl)
-					commentEl.appendChild(commentEditEl)
-
-					const commentEditSubmitEl = commentEditEl.querySelector(".comment-edit-submit")
-					const commentEditInputEl = commentEditEl.querySelector(".comment-edit-input")
-					commentEditInputEl.innerHTML = comment.fields.content
-					editUrl = commentEditSubmitEl.dataset.action.replace('0', comment.pk)
-
-					commentEditSubmitEl.addEventListener('click', event => {
+				if (comment.perms.delete) {
+					const deleteButton = commentEl.querySelector(".comment-delete")
+					const deleteUrl = deleteButton.dataset.action.replace('0', comment.pk)
+					delete deleteButton.dataset.action
+	
+					commentEl.querySelector(".comment-delete").addEventListener('click', event => {
 						event.preventDefault()
-						fetch(editUrl, {
-							method: 'POST',
-							body: JSON.stringify({
-								content: commentEditInputEl.value
-							}),
+						fetch(deleteUrl, {
+							method: 'DELETE',
 							headers: {
 								'X-CSRFToken': window.CSRF_TOKEN
 							}
 						})
 							.then(response => {
 								if (response.status === 200 || response.status === 201) {
-									commentEl.removeChild(commentEditEl)
-									commentEl.appendChild(commentContentEl)
-									return response.json()
+									// loadComments()
+									commentEl.remove()
+									hasDeletedComment = true
+									isLastPage = false
+									loadedComments = loadedComments.filter(id => id !== comment.pk)
+									currentPage = Math.max(Math.ceil(loadedComments.length / 10), 1)
+									updateNoCommentsPlaceholder()
 								}
-								throw Error()
 							})
-							.then(newComment => {
-								comment = newComment
-								commentEl.querySelector(".comment-content").innerHTML = marked.parse(comment.fields.content)
-							})
-					
 					})
-				})
+				} else {
+					commentEl.querySelector(".comment-delete-part").remove()
+				}
 
 				commentsListEl.appendChild(commentEl)
 				loadedComments.push(comment.pk)
 			})
 			// commentsListEl.style.minHeight = 0
 			isLoadingComments = false
+			updateNoCommentsPlaceholder()
 		})
 }
 
@@ -112,6 +115,12 @@ const emptyCommentList = () => {
 	currentPage = 1
 	commentsListEl.innerHTML = ""
 	isLastPage = false
+	updateNoCommentsPlaceholder()
+}
+
+const updateNoCommentsPlaceholder = () => {
+	if (loadComments.length) noCommentsPlaceholderEl.classList.add('d-none')
+	else noCommentsPlaceholderEl.classList.remove('d-none')
 }
 
 loadComments(1)
