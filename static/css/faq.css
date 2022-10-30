@@ -1,0 +1,30 @@
+/* Custom styles here... */
+
+body {
+    align-items: center;
+    background-color: #588157;
+    justify-content: center;
+    display: flex;
+    height: 97vh;
+}
+
+h1{
+    color: #eee;
+    font-family: Tahoma;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 900px;
+    margin-top: 30px;
+}
+
+table {
+    text-align: center; 
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+a:hover {
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.25em);
+} 
+
