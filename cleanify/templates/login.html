@@ -1,45 +1,68 @@
-{% extends 'base.html' %}
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{% static 'css/formregister.css' %}">
+	<title>Login</title>
+</head>
 
-{% block meta %}
-<title>Login</title>
-{% endblock meta %}
-
-{% block content %}
-
-<div class = "login">
-
-    <h1>Login</h1>
-
-    <form method="POST" action="">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Username: </td>
-                <td><input type="text" name="username" placeholder="Username" class="form-control"></td>
-            </tr>
-                    
-            <tr>
-                <td>Password: </td>
-                <td><input type="password" name="password" placeholder="Password" class="form-control"></td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input class="btn login_btn" type="submit" value="Login"></td>
-            </tr>
-        </table>
-    </form>
-
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}     
-        
-    Belum mempunyai akun? <a href="{% url 'cleanify:register' %}">Buat Akun</a>
-
-</div>
-
-{% endblock content %}
+<body>
+    <nav class="navbar navbar-light px-4 mb-5" style="background-color: #fffddf;">
+		<span class="navbar-text mb-0 h5">login here!</span>
+		<span class="navbar-brand mb-0 h1">LOG IN</span>
+		<form action="{% url 'register' %}">
+			{% csrf_token %}
+			<button type="submit" class="btn btn-primary">register</button>
+		</form>
+	</nav>
+    <div class="container">
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <form action="" method="POST" id="login-form">
+                {% csrf_token %}
+                <div class="row" style="margin-left:0px; padding-right:50px;">
+                    <div class="col-md-12">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" name="email" placeholder="" required autofocus>
+                        <br>
+                        <label for="password">Password:</label>
+                        <input type="password" class="form-control" name="password" placeholder="" required>
+                      
+    
+                        {% for field in login_form %}
+                        <p>
+                        {% for error in field.errors %}
+                        <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                        </p>
+                        {% endfor %}
+                        
+                        {% if login_form.non_field_errors %}
+                        <div class="non-field-errors">
+                        {% for err in login_form.non_field_errors %}
+                        <ul>
+                        <p class="form-error" ><li style="color: red; text-align: left;">{{ err }}</li></p></ul>
+                        {% endfor %}
+                        </div>
+                        {% endif %}
+    
+                        <input type="submit" id="reg-button" value="login" class="btn btn-success btn-block" style="width: 426px;">
+                        <br> <br>
+                        <label for="">Daftar <a href="{% url 'register' %}">disini</a> apabila tidak memiliki akun</label>
+                    </div>
+                </div>
+            </form>
+            </div>
+          </div>
+        </div>
+    </div>
+  </body>
+</html>
