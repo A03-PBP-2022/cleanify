@@ -156,7 +156,7 @@ if (form) form.addEventListener("submit", event => {
 
 const deletePostButton = document.querySelector(".post-delete")
 
-deletePostButton.addEventListener('click', event => {
+if (deletePostButton) deletePostButton.addEventListener('click', event => {
 	event.preventDefault()
 	const actionUrl = event.target.dataset.action
 	const redirectUrl = event.target.dataset.redirect
