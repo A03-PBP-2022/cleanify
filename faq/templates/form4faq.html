@@ -8,8 +8,8 @@
 
 {% block content %}
 
-<div class="container">
-    <h1><br><strong>Add Cleanify FAQ</strong></h1><br>
+<div class="container text-white my-4">
+    <h1 class="text-center fw-bold mb-4">Add New Question</h1>
     <form action="" method="POST">
         {% csrf_token %}
         <div class="mb-3">
@@ -23,6 +23,5 @@
         <button type="submit" class="btn btn-success" id="btn-add">Add FAQ</button>
     </form>
 </div>
-
 
 {% endblock content %}
