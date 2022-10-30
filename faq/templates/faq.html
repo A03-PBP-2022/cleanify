@@ -13,19 +13,19 @@
     <div class="faq-container">
         {% for faq in faqs %}
         <div class="card text-body">
-            <h5 class="card-header"><strong>{{faq.question}}</strong></h5>
+            <h5 class="card-header fw-bold">{{faq.question}}</h5>
             <div class="card-body">
                 <p class="card-text">{{faq.answer}}</p>
-                <a class="btn btn-success thumbsUp" data-pk="{{faq.pk}}">
-                    <strong>{{faq.thumbsUp}} Thumbs Up</strong>
+                <a class="btn btn-success thumbsUp fw-bold" data-pk="{{faq.pk}}">
+                    {{faq.thumbsUp}} Thumbs Up
                 </a>
             </div>
         </div>
         <br>
         {% endfor %}
     </div>
-    <a class="btn btn-success " href="{% url 'faq:add' %}">
-        <strong>Add New Question</strong>
+    <a class="btn btn-success fw-bold" href="{% url 'faq:add' %}">
+        Add New Question
     </a>
 
 </div>
