@@ -1,4 +1,3 @@
-from tkinter.tix import Select
 from django import forms
 from django import forms
 from banksampah.models import Bank
