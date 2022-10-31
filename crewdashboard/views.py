@@ -19,14 +19,12 @@ def show_json(request):
 def add_new_locations(request):
     if request.method == 'POST':
         location = request.POST.get('location')
-        image = request.POST.get('image')
         urgency = request.POST.get('urgency')
         description = request.POST.get('description')
 
         new_location = Locations.objects.create(
             date = datetime.datetime.now(),
             location = location,
-            image = image,
             urgency = urgency,
             description = description,
             )
