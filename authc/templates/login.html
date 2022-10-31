@@ -38,6 +38,8 @@
             </div>
             {% endif %}
 
+            <input type="hidden" name="next" value="{{ request.GET.next }}"/>
+
             <input type="submit" id="reg-button" value="login" class="btn btn-success btn-block" style="width: 426px;">
             <br> <br>
             <label for="">Daftar <a href="{% url 'authc:register' %}">disini</a> apabila tidak memiliki akun</label>
