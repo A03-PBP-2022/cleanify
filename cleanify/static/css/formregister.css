@@ -1,0 +1,40 @@
+body{
+    background:url("bg1.JPEG") no-repeat;
+    background-size: cover; 
+    color: rgb(255, 255, 255);
+    font-family: Garamond ;
+    font-size: 20px;
+}
+
+.regist_container{
+    width: 35%;
+    margin: 3rem auto 0 auto;
+}
+
+.login_container{
+    width: 30%;
+    margin: 10rem auto 0 auto;
+}
+
+h1{
+    text-align: center; 
+    font-family: Garamond ;
+    font-weight: bold;
+    margin: 2rem auto 2.5rem auto;
+}
+
+input[type="radio"]{
+    margin: 0 10px 0 35px;
+}
+
+#reg-button{
+    width: 500px;
+    padding: 7px 0;
+    margin: 8px 0;
+    font-size: 20px;
+}
+.row{
+    width: 500px;
+    margin-left: 70px;
+}
+
