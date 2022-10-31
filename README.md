@@ -31,17 +31,19 @@ Modul ini berfungsi sebagai autentikasi user menggunakan aplikasi. Tedapat prose
 
 Modul ini berfungsi sebagai tempat melaporkan wilayah sampah yang perlu dibersihkan oleh crew, yang dikhususkan untuk user untuk diisi. Laporan ini nanti akan ditunjukkan pada dasbor laporan wilayah sampah.
 
-### 3. Dasbor Laporan Wilayah Sampah
+Modul ini juga berisi dasbor yang berisi laporan-laporan wilayah sampah yang perlu dibersihkan oleh para cleaner crews. Laporan yang ditampilkan merupakan hasil pengisian form berupa pelaporan wilayah sampah yang patut dibersihkan. Dasbor ini dikhususkan untuk para cleaner crews agar mereka mendapat informasi lebih lanjut terkait wilayah sampah tersebut dan tindakan yang akan direncanakan.
 
-Modul ini merupakan dasbor yang berisi laporan-laporan wilayah sampah yang perlu dibersihkan oleh para cleaner crews. Laporan yang ditampilkan merupakan hasil pengisian form berupa pelaporan wilayah sampah yang patut dibersihkan. Dasbor ini dikhususkan untuk para cleaner crews agar mereka mendapat informasi lebih lanjut terkait wilayah sampah tersebut dan tindakan yang akan direncanakan.
-
-### 4. Bank Sampah
+### 3. Bank Sampah
 
 Modul ini merupakan halaman yang berisikan form untuk user melakukan setor sampah ke dalam tempat bank sampah tersebut. Setelah melakukan pengisian form tersebut, maka akan dilakukannya pengambilan sampah tersebut.
 
-### 5. FAQ
+### 4. FAQ
 
-Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi ini. Modul ini dapat dilihat dan diakses oleh user.
+Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi ini. User juga dapat mengirimkan *thumbs up* untuk menandakan bahwa sebuah pertanyaan berguna bagi para pembaca, yang akan membuat pertanyaan tersebut berada di atas daftar pertanyaan. Modul ini dapat dilihat dan diakses oleh User.
+
+## 5. Blog
+
+Modul ini berisi sistem blog yang berisi artikel-artikel yang berkaitan dengan sampah dan/atau lingkungan sekitar, yang dapat ditulis oleh admin dan di baca oleh User lainnya. Pengguna juga dapat memberikan komentar pada tiap artikel yang ditulis. Diharapkan para pembaca dapat meningkatkan *awareness* terkait visi yang kita harapkan.
 
 ## 👥 Roles
 

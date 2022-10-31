@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Register - Cleanify</title>
+<link rel="stylesheet" href="{% static 'css/formregister.css' %}">
+{% endblock meta %}
+
+{% block content %}
+<form class="auth-container" method="post" id="register-form">{% csrf_token %}
+	<div class="col-md-12">
+		<label for="email" class="form-label">Email</label>
+		<input type="email" name="email" id="inputEmail" class="form-control" placeholder="Your e-mail" required autofocus>
+
+		<label for="username" class="form-label mt-3">Username:</label>
+		<input type="text" name="username" id="inputUsername" class="form-control" placeholder="Your username" required>
+
+		<label for="password1" class="form-label mt-3">Password:</label>
+		<input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="Your password" required>
+
+		<label for="password2" class="form-label mt-3">Confirm Password</label>
+		<input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="Your password again" required>
+
+		<label for="name" class="form-label mt-3">Full Name:</label>
+		<input type="text" name="nama" id="inputNama" class="form-control" placeholder="Your full name">
+
+		<label for="kontak" class="form-label mt-3">Phone Number</label>
+		<input type="text" name="kontak" id="inputKontak" class="form-control" placeholder="Your phone number">
+
+		<label for="alamat" class="form-label mt-3">Address</label>
+		<input type="text" name="alamat" id="inputAlamat" class="form-control" placeholder="Your address">
+
+		<label for="role" class="form-label mt-3">Role</label>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="role" id="user" value="user">
+			<label class="form-check-label" for="user">User</label>
+		</div>
+		<div class="form-check">
+			<input class="form-check-input" type="radio" name="role" id="crew" value="crew">
+			<label class="form-check-label" for="crew">Crew</label>
+		</div>
+	</div>
+
+	<div id="error" class="alert alert-danger d-none mt-3" role="alert">
+		
+	</div>
+
+	<button class="btn btn-md btn-success w-100 mt-3" type="submit">Register</button>
+</form>
+
+<script type="text/javascript">
+	$(document).on('submit', '#register-form', function (e) {
+		e.preventDefault();
+
+		var register_form_id = $('#register-form')
+
+		$.ajax({
+			type: 'POST',
+			url: "{% url 'authc:register' %}",
+			data: register_form_id.serialize(),
+			dataType: "json",
+			header: { 'X-CSRFToken': '{% csrf_token %}' },
+			success: function (response) {
+				var success = response['success']
+				if (success) {
+					window.location = "{% url 'authc:login' %}?status=registered"
+				}
+				else {
+					alert("Pendaftaran akun gagal! Harap periksa input Anda.");
+					for (var msg in response['error']) {
+						var txt = JSON.stringify(response['error'][msg]);
+						document.getElementById("error").innerHTML = txt.replace(/[&\/\\#,\]+()$~%['":*?<>{}]/g, '');
+					}
+				}
+			},
+		});
+	});
+</script>
+{% endblock content %}

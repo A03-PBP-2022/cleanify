@@ -40,7 +40,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
+<<<<<<< HEAD
     'crewdashboard',
+=======
+    'banksampah',
+    'blog',
+    'faq',
+    'authc'
+>>>>>>> 9fc00c7cb50549bc88a4339594273dda7c4ad18a
 ]
 
 MIDDLEWARE = [
@@ -71,6 +78,8 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'authc.User' #untuk override default behavior django dengan dengan defaul user object
 
 WSGI_APPLICATION = 'project_django.wsgi.application'
 
@@ -141,3 +150,5 @@ for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOGIN_URL = '/auth/login/'

@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Frequently Asked Questions - Cleanify</title>
+<link rel="stylesheet" href="{% static 'css/faq.css' %}">
+{% endblock meta %}
+
+{% block content %}
+<div class="container text-white my-4">
+    <h1 class="text-center fw-bold">Frequently Asked Questions</h1>
+    <br>
+    <div class="faq-container">
+        {% for faq in faqs %}
+        <div class="card text-body">
+            <h5 class="card-header fw-bold">{{faq.question}}</h5>
+            <div class="card-body">
+                <p class="card-text">{{faq.answer}}</p>
+                <a class="btn btn-success thumbsUp fw-bold" data-pk="{{faq.pk}}">
+                    {{faq.thumbsUp}} Thumbs Up
+                </a>
+            </div>
+        </div>
+        <br>
+        {% endfor %}
+    </div>
+    <a class="btn btn-success fw-bold" href="{% url 'faq:add' %}">
+        Add New Question
+    </a>
+
+</div>
+
+<script>
+    $(".thumbsUp").on('click', function () {
+        var dataPK = $(this).attr('data-pk');
+        $.ajax({
+            headers: { 'X-CSRFToken': window.CSRF_TOKEN },
+            type: 'POST',
+            url: "{% url 'faq:update_thumbsUp' %}",
+            data: {
+                pk: dataPK
+            },
+            success: function () {
+                console.log('Success')
+                location.reload(true)
+            }
+        })
+    })
+</script>
+
+{% endblock content %}

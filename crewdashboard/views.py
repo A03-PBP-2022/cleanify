@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.core import serializers
 from .models import Locations
 import datetime
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -14,10 +15,11 @@ def show_json(request):
     data = Locations.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
+@csrf_exempt
 def add_new_locations(request):
     if request.method == 'POST':
         location = request.POST.get('location')
-        image = request.POST.get('description')
+        image = request.POST.get('image')
         urgency = request.POST.get('urgency')
         description = request.POST.get('description')
 
@@ -30,4 +32,4 @@ def add_new_locations(request):
             )
         new_location.save()
         return HttpResponse("")
-    return render(request, 'locations.html')
+    return render(request, 'locations.html');
