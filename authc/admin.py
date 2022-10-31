@@ -8,13 +8,13 @@ from .forms import GroupAdminForm
 # https://youtu.be/XJU9vRARkGo
 
 class AccountAdmin(UserAdmin):
-	list_display = ('email','username','is_admin','is_staff')
-	search_fields = ('email','username',)
-	readonly_fields=('id',)
+    list_display = ('email','username','is_admin','is_staff')
+    search_fields = ('email','username',)
+    readonly_fields=('id',)
 
-	filter_horizontal = ()
-	list_filter = ()
-	fieldsets = ()
+    filter_horizontal = ()
+    list_filter = ()
+    fieldsets = ()
 
 admin.site.register(User, AccountAdmin)
 

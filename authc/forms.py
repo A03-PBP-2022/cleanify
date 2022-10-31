@@ -10,11 +10,14 @@ from django.utils.translation import gettext_lazy as _
 
 
 class RegistrationForm(UserCreationForm):
-	email = forms.EmailField(max_length=60, help_text='Wajib memasukkan alamat email.')
+    email = forms.EmailField(max_length=60, help_text='Wajib memasukkan alamat email.')
 
-	class Meta:
-		model = User
-		fields = ('email', 'username', 'password1', 'password2', 'nama', 'kontak', 'alamat','role')
+    class Meta:
+        model = User
+        fields = ('email', 'username', 'password1', 'password2', 'nama', 'kontak', 'alamat', 'role')
+
+    def clean(self):
+        super().clean()
 
 # https://youtu.be/tTvSl3RHBjE
 class UserAuthenticationForm(forms.ModelForm):
