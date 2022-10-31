@@ -35,7 +35,7 @@
 
 	<h2>Comments</h2>
 
-	{% if perms_.add_comment %}
+	{% if perms.blog.add_comment %}
 	<form id="comment-new-form" method="post" action="{% url 'blog:api_create_comment' post.pk %}">
 		<div class="mb-3">
 			<textarea type="text" class="form-control expand" id="new-comment-input" name="content"></textarea>

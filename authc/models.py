@@ -50,11 +50,5 @@ class User(AbstractBaseUser, PermissionsMixin):
 	def __str__(self): #yang mau ditampilin ke template
 		return self.username
 
-	def has_perm(self, perm, obj=None):
-		return self.is_admin
-
-	def has_module_perms(self, app_label):
-		return True
-
 
 # link referensi : https://youtu.be/eCeRC7E8Z7Y
