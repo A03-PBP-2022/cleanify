@@ -7,43 +7,55 @@
 {% endblock meta %}
 
 {% block content %}
-<form action="" method="POST" id="login-form">
-    {% csrf_token %}
-    <div class="row" style="margin-left:0px; padding-right:45px;">
-        <div class="col-md-12">
-            <label for="email">Email:</label>
-            <input type="email" class="form-control" name="email" placeholder="" required autofocus>
-            <br>
-            <label for="password">Password:</label>
-            <input type="password" class="form-control" name="password" placeholder="" required>
+<form action="" method="POST" id="login-form" class="auth-container">
 
-
-            {% for field in login_form %}
-            <p>
-                {% for error in field.errors %}
-            <p style="color: red">{{ error }}</p>
-            {% endfor %}
-            </p>
-            {% endfor %}
-
-            {% if login_form.non_field_errors %}
-            <div class="non-field-errors">
-                {% for err in login_form.non_field_errors %}
-                <ul>
-                    <p class="form-error">
-                        <li style="color: red; text-align: left;">{{ err }}</li>
-                    </p>
-                </ul>
-                {% endfor %}
-            </div>
-            {% endif %}
-
-            <input type="hidden" name="next" value="{{ request.GET.next }}"/>
-
-            <input type="submit" id="reg-button" value="login" class="btn btn-success btn-block" style="width: 426px;">
-            <br> <br>
-            <label for="">Daftar <a href="{% url 'authc:register' %}">disini</a> apabila tidak memiliki akun</label>
-        </div>
+    {% if request.GET.status == "registered" %}
+    <div class="alert alert-success mt-3 mb-0" role="alert">
+        Successfully registered! Log in to continue.
     </div>
+    {% endif %}
+
+    <label for="email" class="form-label mt-3">Email</label>
+    <input type="email" class="form-control" name="email" placeholder="" required autofocus>
+
+    <label for="password" class="form-label mt-3">Password</label>
+    <input type="password" class="form-control" name="password" placeholder="" required>
+
+    {% csrf_token %}
+
+    {% for field in login_form %}
+    {% if field.errors %}
+    <div class="alert alert-danger mt-3" role="alert">
+        <ul>
+            {% for err in field.errors %}
+            <li>{{ err }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    {% endfor %}
+
+    {% if login_form.non_field_errors %}
+    <div id="error" class="alert alert-danger d-none mt-3" role="alert">
+        {% for err in login_form.non_field_errors %}
+        <ul>
+            <p class="form-error">
+                <li style="color: red; text-align: left;">{{ err }}</li>
+            </p>
+        </ul>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <input type="hidden" name="next" value="{{ request.GET.next }}" />
+
+    <input type="submit" id="reg-button" value="Login" class="btn btn-success btn-block w-100 mt-3">
+    <p class="mt-3"><a href="{% url 'authc:register' %}">Register</a> if you don't have an account.</p>
 </form>
+
+<script>
+    if (new URLSearchParams(document.location.search).get('status') === "registered") {
+
+    } 
+</script>
 {% endblock content %}

@@ -32,8 +32,11 @@ def registration_view(request):
 def login_view(request):
 	context = {}
 	user = request.user
-	# if user.is_authenticated:
-	# 	return redirect('authc:dashboard.html') #ganti ini sama nama page dashboard
+	if user.is_authenticated:
+		if 'GET' in request and 'next' in request.GET:
+			pass
+		else:
+			return redirect('index:index_page')
 
 	if request.POST:
 		form = UserAuthenticationForm(request.POST)
@@ -43,7 +46,7 @@ def login_view(request):
 			user = authenticate(email=email, password=password)
 			if user:
 				login(request, user)
-				if request.POST['next']:
+				if 'next' in request.POST:
 					return redirect(request.POST['next'])
 				return redirect('index:index_page')			
 	else:
