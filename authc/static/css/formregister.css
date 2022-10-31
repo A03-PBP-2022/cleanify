@@ -1,8 +1,17 @@
-body{
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
     background:url("bg1.JPEG") no-repeat;
+    color: white;
     background-size: cover; 
-    color: rgb(255, 255, 255);
-    font-family: Garamond ;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    display: flex;
     font-size: 20px;
 }
 
@@ -16,7 +25,7 @@ body{
     margin: 10rem auto 0 auto;
 }
 
-h1{
+main h1{
     text-align: center; 
     font-family: Garamond ;
     font-weight: bold;
