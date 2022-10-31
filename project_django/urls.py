@@ -16,17 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from cleanify.views import registration_view, login_view, logout_view
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('index.urls')),
     path('banksampah/', include('banksampah.urls')),
     path('blog/', include('blog.urls')),
     path('faq/', include('faq.urls')),
-    
-    path('cleanify/register/',registration_view, name='register'),
-    path('cleanify/login/',login_view, name='login'),
-    path('cleanify/logout/',logout_view, name='logout') 
+    path('auth/', include('authc.urls')),
 ]
 

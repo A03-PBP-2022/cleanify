@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required, permission_required
 from django.core.paginator import Paginator, EmptyPage
 from blog.models import Post, Comment
 
+def has_perm(perms, request):
+	return request.user.has_perm(perms) or perms in list(request.user.get_group_permissions())
+
 def show_index(request):
 
 	posts = Post.objects.all().order_by('-created_timestamp')
@@ -26,7 +29,10 @@ def view_post(request, id):
 
 	return render(request, "post.html", {
 		'post': post,
-		'comments': comments
+		'comments': comments,
+		'perms_': {
+			'add_comment': has_perm('blog.add_comment', request)
+		}
 	})
 
 @permission_required('blog:create_post')
@@ -43,7 +49,7 @@ def edit_post(request, id):
 	
 	# (request.user.has_perm('blog.delete_other_comment') or request.user.has_perm('blog.delete_self_comment'))
 
-	if not (post.author == (request.user and request.user.has_perm('blog.edit_self_post')) or request.user.has_perm('blog.edit_other_post')):
+	if not (post.author == (request.user and request.user.has_perm('blog.change_self_post')) or request.user.has_perm('blog.change_other_post')):
 		return redirect_to_login(request.path)
 	
 	return render(request, "post-edit.html", {

@@ -11,7 +11,7 @@
     <nav class="navbar navbar-light px-4 mb-5" style="background-color: #859185;">
 		<span class="navbar-text mb-0 h5">login here!</span>
 		<span class="navbar-brand mb-0 h1">LOGIN</span>
-		<form action="{% url 'register' %}">
+		<form action="{% url 'authc:register' %}">
 			{% csrf_token %}
 			<button type="submit" class="btn btn-success">register</button>
 		</form>
@@ -48,7 +48,7 @@
 
                   <input type="submit" id="reg-button" value="login" class="btn btn-success btn-block" style="width: 426px;">
                   <br> <br>
-                  <label for="">Daftar <a href="{% url 'register' %}">disini</a> apabila tidak memiliki akun</label>
+                  <label for="">Daftar <a href="{% url 'authc:register' %}">disini</a> apabila tidak memiliki akun</label>
               </div>
           </div>
       </form>

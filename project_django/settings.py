@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'banksampah',
     'blog',
     'faq',
-    'cleanify'
+    'authc'
 ]
 
 MIDDLEWARE = [
@@ -75,7 +75,7 @@ TEMPLATES = [
     },
 ]
 
-AUTH_USER_MODEL = 'cleanify.User' #untuk override default behavior django dengan dengan defaul user object
+AUTH_USER_MODEL = 'authc.User' #untuk override default behavior django dengan dengan defaul user object
 
 WSGI_APPLICATION = 'project_django.wsgi.application'
 

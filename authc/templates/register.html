@@ -17,7 +17,7 @@
 	<nav class="navbar navbar-light px-4 mb-5" style="background-color:#859185;">
 		<span class="navbar-text mb-0 h5">Please register!</span>
 		<span class="navbar-brand mb-0 h1">Registration Form</span>
-		<form action="{% url 'login' %}">
+		<form action="{% url 'authc:login' %}">
 			{% csrf_token %}
 			<button type="submit" class="btn btn-success">login</button>
 		</form>
@@ -86,7 +86,7 @@ $(document).on('submit', '#register-form', function(e){
 
 	$.ajax({
 		type:'POST',
-		url:"{% url 'register' %}",
+		url:"{% url 'authc:register' %}",
 		data:register_form_id.serialize(),
 		dataType:"json",
 		header: {'X-CSRFToken': '{% csrf_token %}'},

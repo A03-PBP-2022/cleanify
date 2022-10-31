@@ -1,7 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
-class MyAccountManager(BaseUserManager):
+class AccountManager(BaseUserManager):
 	def create_user(self, email, username, password=None):
 		if not email:
 			raise ValueError('Users must have an email address')
@@ -28,13 +28,13 @@ class MyAccountManager(BaseUserManager):
 		user.save(using=self._db)
 		return user
 
-class User(AbstractBaseUser):
+class User(AbstractBaseUser, PermissionsMixin):
 	email = models.EmailField(verbose_name="email", max_length=60, unique=True)
 	username = models.CharField(max_length=30, unique=True)
-	is_admin				= models.BooleanField(default=False)
-	is_active				= models.BooleanField(default=True)
-	is_staff				= models.BooleanField(default=False)
-	is_superuser			= models.BooleanField(default=False)
+	is_admin = models.BooleanField(default=False)
+	is_active = models.BooleanField(default=True)
+	is_staff = models.BooleanField(default=False)
+	is_superuser = models.BooleanField(default=False)
 	nama = models.CharField(max_length=100)
 	kontak = models.CharField(max_length=100)
 	alamat = models.TextField()
@@ -45,7 +45,7 @@ class User(AbstractBaseUser):
 	#yang required saat signup
 	REQUIRED_FIELDS = ['username']
 
-	objects = MyAccountManager()
+	objects = AccountManager()
 
 	def __str__(self): #yang mau ditampilin ke template
 		return self.username

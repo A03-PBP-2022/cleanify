@@ -3,12 +3,15 @@ from django.http import HttpResponse, JsonResponse
 from django.core import serializers
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage
-from django.contrib.auth.models import User
+from authc.models import User
 from blog.forms import PostForm, CommentForm
 from blog.models import Post, Comment
 from datetime import date, datetime
 import bleach
 import json
+
+def has_perm(perms, request):
+	return perms in list(request.user.get_group_permissions())
 
 def HttpResponseJson(json_obj, **kwargs):
 	return HttpResponse(json.dumps(json_obj), content_type="application/json", **kwargs)
@@ -53,7 +56,7 @@ def get_post(request, post_id):
 	return JsonResponse(object_to_json(post))
 
 def create_post(request):
-	if not request.user.is_authenticated or not request.user.has_perm('create_post'):
+	if not request.user.is_authenticated or not has_perm('blog.add_post', request):
 		return apires_unauthorized([])
 	if not request.method == "POST":
 		return apires_bad_request([])
@@ -73,7 +76,7 @@ def create_post(request):
 	return apires_created(object_to_json(post))
 
 def edit_post(request, post_id):
-	if not request.user.is_authenticated or not (request.user.has_perm('blog.edit_other_post') or request.user.has_perm('blog.edit_self_post')):
+	if not request.user.is_authenticated or not (has_perm('blog.change_other_post', request) or has_perm('blog.change_self_post', request)):
 		return apires_unauthorized()
 	if not request.method == "POST":
 		return apires_bad_request()
@@ -82,7 +85,7 @@ def edit_post(request, post_id):
 
 	if not post:
 		return apires_bad_request()
-	if not request.user.has_perm('blog.edit_other_post'):
+	if not has_perm('blog.change_other_post', request):
 		if not request.user != post.author:
 			return apires_unauthorized()
 
@@ -95,7 +98,7 @@ def edit_post(request, post_id):
 	return apires_ok(object_to_json(post))
 
 def delete_post(request, post_id):
-	if not request.user.is_authenticated or not (request.user.has_perm('blog.delete_other_post') or request.user.has_perm('blog.delete_self_post')):
+	if not request.user.is_authenticated or not (has_perm('blog.delete_other_post', request) or has_perm('blog.delete_self_post', request)):
 		return apires_unauthorized()
 	if not request.method == "DELETE":
 		return apires_bad_request()
@@ -104,7 +107,7 @@ def delete_post(request, post_id):
 
 	if not post:
 		return apires_bad_request()
-	if not request.user.has_perm('blog.delete_other_post'):
+	if not has_perm('blog.delete_other_post', request):
 		if not request.user != post.author:
 			return apires_unauthorized()
 
@@ -136,13 +139,12 @@ def list_comments(request, post_id):
 
 		comment['fields']['author'] = {
 			'username': user.username,
-			'first_name': user.first_name,
-			'last_name': user.last_name
+			'name': user.nama,
 		}
 
 		comment['perms'] = {
-			'edit': (user == request.user and request.user.has_perm('edit_self_comment')) or request.user.has_perm('edit_other_comment'),
-			'delete': (user == request.user and request.user.has_perm('delete_self_comment')) or request.user.has_perm('delete_other_comment'),
+			'edit': (user == request.user and has_perm('blog.change_self_comment', request)) or has_perm('blog.change_other_comment', request),
+			'delete': (user == request.user and has_perm('blog.delete_self_comment', request)) or has_perm('blog.delete_other_comment', request),
 		}
 
 	return apires_ok(comments)
@@ -161,7 +163,7 @@ def get_comment(request, post_id, comment_id):
 	return apires_ok(object_to_json(comment))
 
 def create_comment(request, post_id):
-	if not request.user.is_authenticated or not request.user.has_perm('create_comment'):
+	if not request.user.is_authenticated or not has_perm('blog.add_comment', request):
 		return apires_unauthorized()
 	if not request.method == "POST":
 		return apires_bad_request()
@@ -186,7 +188,7 @@ def create_comment(request, post_id):
 	return apires_created(object_to_json(comment))
 
 def edit_comment(request, post_id, comment_id):
-	if not request.user.is_authenticated or not (request.user.has_perm('blog.edit_other_comment') or request.user.has_perm('blog.edit_self_comment')):
+	if not request.user.is_authenticated or not (has_perm('blog.change_other_comment', request) or has_perm('blog.change_self_comment', request)):
 		return apires_unauthorized([])
 	if not request.method == "POST":
 		return apires_bad_request([])
@@ -200,7 +202,7 @@ def edit_comment(request, post_id, comment_id):
 
 	if not comment or not comment.post == post:
 		return apires_bad_request([])
-	if not request.user.has_perm('blog.edit_other_comment'):
+	if not has_perm('blog.change_other_comment', request):
 		if not request.user != post.author:
 			return apires_unauthorized([])
 		
@@ -212,7 +214,7 @@ def edit_comment(request, post_id, comment_id):
 	return apires_created(object_to_json(comment))
 
 def delete_comment(request, post_id, comment_id):
-	if not request.user.is_authenticated or not (request.user.has_perm('blog.delete_other_comment') or request.user.has_perm('blog.delete_self_comment')):
+	if not request.user.is_authenticated or not (has_perm('blog.delete_other_comment', request) or has_perm('blog.delete_self_comment', request)):
 		return apires_unauthorized()
 	if not request.method == "DELETE":
 		return apires_bad_request()
@@ -221,7 +223,7 @@ def delete_comment(request, post_id, comment_id):
 
 	if not post:
 		return apires_not_found()
-	if not request.user.has_perm('blog.delete_other_comment'):
+	if not has_perm('blog.delete_other_comment', request):
 		if not request.user != post.author:
 			return apires_unauthorized()
 	
