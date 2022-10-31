@@ -14,74 +14,68 @@
 
 </head>
 <body>
-	<nav class="navbar navbar-light px-4 mb-5" style="background-color: #fffddf;">
+	<nav class="navbar navbar-light px-4 mb-5" style="background-color:#859185;">
 		<span class="navbar-text mb-0 h5">Please register!</span>
 		<span class="navbar-brand mb-0 h1">Registration Form</span>
 		<form action="{% url 'login' %}">
 			{% csrf_token %}
-			<button type="submit" class="btn btn-primary">login</button>
+			<button type="submit" class="btn btn-success">login</button>
 		</form>
 	  </nav>
 
-	<div class="container">
-		<div class="row">
-		  <div class="card">
-			<div class="card-body">
-			  <form class="form-signin" method="post" id="register-form">{% csrf_token %}
-			  <div class="col-md-12">
-				<label for="email">Email:</label> <br>
-				<input type="email" name="email" id="inputEmail" class="form-control" placeholder="your email" required autofocus> <br>
-			  </div>
-			  
-			  <div class="col-md-12">
-				<label for="username">Username:</label> <br>
-				<input type="text" name="username" id="inputUsername" class="form-control" placeholder="your username" required> <br>
-			  </div>
-	
-			  <div class="col-md-12">
-				<label for="password1">Password:</label> <br>
-				<input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="password" required> <br>
-			  </div>
-	
-			  <div class="col-md-12">
-				<label for="password2">Confirm Password:</label> <br>
-				<input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="confirm password" required><br>
-			  </div>
-	
-			  <div class="col-md-12">
-				<label for="name">Nama Lengkap:</label> <br>
-				<input type="text" name="nama" id="inputNama" class="form-control" placeholder="full name"> <br>
-			  </div>
-			  
-			  <div class="col-md-12">
-				<label for="kontak">Kontak:</label> <br>
-				<input type="text" name="kontak" id="inputKontak" class="form-control" placeholder="phone number"><br>
-			  </div>
-	
-			  <div class="col-md-12">
-				<label for="alamat">Alamat:</label> <br>
-				<input type="text" name="alamat" id="inputAlamat" class="form-control" placeholder="address"><br>
-			  </div>
+	<div class="regist_container">
+		<form class="form-signin" method="post" id="register-form">{% csrf_token %}
+		<div class="col-md-12">
+		<label for="email">Email:</label> <br>
+		<input type="email" name="email" id="inputEmail" class="form-control" placeholder="your email" required autofocus> <br>
+		</div>
+		
+		<div class="col-md-12">
+		<label for="username">Username:</label> <br>
+		<input type="text" name="username" id="inputUsername" class="form-control" placeholder="your username" required> <br>
+		</div>
 
-			  <div class="col-md-12">
-				<label for="role">Role:</label><br><br>
-				<input type="radio" name="role" id="crew" value="crew">
-				<label for="crew">crew</label>
-				<input type="radio" name="role" id="user" value="user">
-				<label for="user">user</label>
-				<input type="radio" name="role" id="moderator" value="moderator">
-				<label for="moderator">moderator</label>
-				<input type="radio" name="role" id="superuser" value="superuser">
-				<label for="superuser">superuser</label>
-			  </div>
-	
-			  <p id="error" style="color: red"></p>
-	
-			  <button class="btn btn-md btn-success" id="reg-button" type="submit">Register</button>
-			  </form>
-			</div>
-		  </div>
-		  
+		<div class="col-md-12">
+		<label for="password1">Password:</label> <br>
+		<input type="password" name="password1" id="inputPassword1" class="form-control" placeholder="password" required> <br>
+		</div>
+
+		<div class="col-md-12">
+		<label for="password2">Confirm Password:</label> <br>
+		<input type="password" name="password2" id="inputPassword2" class="form-control" placeholder="confirm password" required><br>
+		</div>
+
+		<div class="col-md-12">
+		<label for="name">Nama Lengkap:</label> <br>
+		<input type="text" name="nama" id="inputNama" class="form-control" placeholder="full name"> <br>
+		</div>
+		
+		<div class="col-md-12">
+		<label for="kontak">Kontak:</label> <br>
+		<input type="text" name="kontak" id="inputKontak" class="form-control" placeholder="phone number"><br>
+		</div>
+
+		<div class="col-md-12">
+		<label for="alamat">Alamat:</label> <br>
+		<input type="text" name="alamat" id="inputAlamat" class="form-control" placeholder="address"><br>
+		</div>
+
+		<div class="col-md-12">
+		<label for="role">Role:</label><br><br>
+		<input type="radio" name="role" id="crew" value="crew">
+		<label for="crew">crew</label>
+		<input type="radio" name="role" id="user" value="user">
+		<label for="user">user</label>
+		<input type="radio" name="role" id="moderator" value="moderator">
+		<label for="moderator">moderator</label>
+		<input type="radio" name="role" id="superuser" value="superuser">
+		<label for="superuser">superuser</label>
+		</div>
+
+		<p id="error" style="color: red"></p>
+
+		<button class="btn btn-md btn-success" id="reg-button" type="submit">Register</button>
+		</form>  
 		</div>
 	  </div>
 <script type="text/javascript">

@@ -1,49 +1,40 @@
 body{
     background:url("bg1.JPEG") no-repeat;
     background-size: cover; 
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-family: Garamond ;
+    font-size: 20px;
 }
 
-h4{
+.regist_container{
+    width: 35%;
+    margin: 3rem auto 0 auto;
+}
+
+.login_container{
+    width: 30%;
+    margin: 10rem auto 0 auto;
+}
+
+h1{
     text-align: center; 
+    font-family: Garamond ;
+    font-weight: bold;
     margin: 2rem auto 2.5rem auto;
 }
 
-.container{
-    width: 200%;
-    margin: 1.8rem auto 0 auto;
-}
-
-
-@media(min-width: 768px){
-    .container{
-      max-width: 640px
-    }
-}
-
 input[type="radio"]{
-    margin: 0 10px 0 40px;
-}
-
-button{
-    padding: 8px 0;
-    margin: 2px 0;
+    margin: 0 10px 0 35px;
 }
 
 #reg-button{
-    width: 448px;
-    padding: 8px 0;
-    margin: 2px 0;
+    width: 500px;
+    padding: 7px 0;
+    margin: 8px 0;
+    font-size: 20px;
 }
 .row{
     width: 500px;
     margin-left: 70px;
 }
 
-.card{
-    width: 600px;
-}
-
-.card-body{
-    width: 480px;
-}

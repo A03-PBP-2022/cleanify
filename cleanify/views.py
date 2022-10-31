@@ -32,8 +32,8 @@ def registration_view(request):
 def login_view(request):
 	context = {}
 	user = request.user
-	# if user.is_authenticated:
-	# 	return redirect('cleanify: dashboard') #ganti ini sama nama page dashboard
+	if user.is_authenticated:
+		return redirect('cleanify: dashboard.html') #ganti ini sama nama page dashboard
 
 	if request.POST:
 		form = UserAuthenticationForm(request.POST)
@@ -52,4 +52,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('cleanify:dashboard') 
+    return redirect('cleanify: login') 
