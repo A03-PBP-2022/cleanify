@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, Group
 
 class AccountManager(BaseUserManager):
 	def create_user(self, email, username, password=None):
@@ -13,6 +13,14 @@ class AccountManager(BaseUserManager):
 			username=username,
 		)
 		user.set_password(password)
+
+		if user.role == 'crew':
+			user_group = Group.objects.get_or_create(name='crew')
+			user.groups.add(user_group)
+		else:
+			user_group = Group.objects.get_or_create(name='user')
+			user.groups.add(user_group)
+
 		user.save(using=self._db)
 		return user
 	
