@@ -6,6 +6,6 @@ app_name = 'crewdashboard'
 urlpatterns = [
     path('dashboard/', show_locations, name='show_locations'),
     path('json/', show_json, name='json'),
-    path('addlocation/', add_new_locations, name='addlocation'),
+    path('', add_new_locations, name='addlocation'),
     path('logout/', logout_view, name='logout'),
 ]
