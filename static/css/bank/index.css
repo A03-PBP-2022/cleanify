@@ -12,12 +12,16 @@ main {
     display: flex;
 }
 
-.form {
-    background-color: #344e41;
-    border-radius: 20px;
+form {
     box-sizing: border-box;
     padding: 20px;
-    width: 320px;
+    max-width: 480px;
+}
+
+.form-inside {
+    background-color: #344e41;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 .title {

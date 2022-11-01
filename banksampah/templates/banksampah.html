@@ -3,14 +3,14 @@
 
 {% block meta %}
 <title>Bank Sampah - Cleanify</title>
-<link rel="stylesheet" href="{% static 'css/banksampah/index.css' %}">
-<script src="{% static 'js/banksampah.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/bank/index.css' %}">
+<script src="{% static 'js/bank/index.js' %}"></script>
 {% endblock meta %}
 
 {% block content %}
-<form method="POST">
+<form method="POST" class="container-fluid">
 
-    <div class="form text-light">
+    <div class="text-light form-inside">
         <h1 class="title fw-bold text-center">Form Bank Sampah</h1>
         {% csrf_token %}
         <div class="mt-2">

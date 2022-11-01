@@ -3,7 +3,8 @@
 
 {% block meta %}
 <title>Frequently Asked Questions - Cleanify</title>
-<link rel="stylesheet" href="{% static 'css/faq.css' %}">
+<script defer src="{% static 'js/faq/list.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/faq/main.css' %}">
 {% endblock meta %}
 
 {% block content %}
@@ -29,23 +30,5 @@
     </a>
 
 </div>
-
-<script>
-    $(".thumbsUp").on('click', function () {
-        var dataPK = $(this).attr('data-pk');
-        $.ajax({
-            headers: { 'X-CSRFToken': window.CSRF_TOKEN },
-            type: 'POST',
-            url: "{% url 'faq:update_thumbsUp' %}",
-            data: {
-                pk: dataPK
-            },
-            success: function () {
-                console.log('Success')
-                location.reload(true)
-            }
-        })
-    })
-</script>
 
 {% endblock content %}

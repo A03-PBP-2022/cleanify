@@ -5,7 +5,7 @@ body {
 }
 
 main {
-    background:url("bg1.JPEG") no-repeat;
+    background:url("/static/img/auth/bg1.JPEG") no-repeat;
     color: white;
     background-size: cover; 
     flex-grow: 1;

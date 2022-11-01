@@ -3,38 +3,40 @@
 
 {% block meta %}
 <title>Report Trash - Cleanify</title>
+<script defer src="{% static 'js/report/form.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/report/form.css' %}">
 {% endblock meta %}
 
 {% block content %}
-<div class="container my-4">
+<div class="container-fluid my-4">
     <h2 class="text-center fst-italic">Welcome, {{ user }}!</h2>
 
     <form method="POST" id="form_post" action="" entype="multipart/form-data">
         {% csrf_token %}
         <tr>
             <div class="form-group mt-3">
-                <h5>Address </h5>
+                <label class="heading-5" for="location">Address </label>
                 <input id="location" type="text" name="location" placeholder="Need-to-Clean Location" class="form-control" minlength="10" required>
             </div>
         </tr>
 
         <tr>
             <div class="form-group mt-3">
-                <h5>Urgency </h5>
+                <label class="heading-5" for="urgency">Urgency </label>
                 <input id="urgency" type="number" name="urgency" placeholder="Urgency level out of 5" class="form-control" min="1" max="5" required>
             </div>
         </tr>
 
         <tr>
             <div class="form-group mt-3">
-                <h5>Description </h5>
+                <label class="heading-5" for="description">Description </label>
                 <input id="description" type="text" name="description" placeholder="Description" class="form-control" minlength="10" required>
             </div>
         </tr>
 
         <tr>
             <div class="form-group mt-3">
-                <h5>Location image: </h5>
+                <label class="heading-5" for="file">Location Image </label>
                 <input id="image" type="file" name="image" accept=".png, .jpg, .jpeg" class="form-control" required>
             </div>
         </tr>
@@ -44,57 +46,5 @@
         </div>
     </form>
 </div>
-
-<script>
-
-    function clear() {
-        var form = document.getElementById("form_post");
-        form.reset();
-    }
-
-    // Melakukan GET POST ketika submit form
-    $(document).on('submit', '#form_post', function (e) {
-        e.preventDefault();
-        var form = document.getElementById("form_post");
-        var formData = new FormData(form);
-        var img = $("#image")[0].files;
-        formData.append("image", img[0]);
-        $.ajax({
-            type: "POST",
-            processData: false,
-            contentType: false,
-            url: "{% url 'crewdashboard:addlocation' %}",
-            data: formData,
-            success: function (response) {
-                clear();
-                console.log("hai");
-            },
-        })
-    });
-
-
-</script>
-
-<style>
-    body {
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    main {
-        background-image: url('{% static "img/crewdashboard/bg.jpg" %}');
-        background-size: cover;
-        flex-grow: 1;
-        align-items: center;
-        display: flex;
-        font-size: 20px;
-    }
-
-    main .container {
-        max-width: 640px;
-    }
-</style>
-
 
 {% endblock content %}

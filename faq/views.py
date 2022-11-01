@@ -45,5 +45,5 @@ def add(request):
     else:
         form = FAQForm()
 
-    return render(request, 'form4faq.html', {'form': form})
+    return render(request, 'faq-form.html', {'form': form})
 
