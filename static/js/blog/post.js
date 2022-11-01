@@ -119,7 +119,7 @@ const emptyCommentList = () => {
 }
 
 const updateNoCommentsPlaceholder = () => {
-	if (loadComments.length) noCommentsPlaceholderEl.classList.add('d-none')
+	if (loadedComments.length) noCommentsPlaceholderEl.classList.add('d-none')
 	else noCommentsPlaceholderEl.classList.remove('d-none')
 }
 
@@ -149,7 +149,8 @@ if (newCommentForm) newCommentForm.addEventListener("submit", event => {
 		.then(response => {
 			if (response.status === 200 || response.status === 201) {
 				currentPage = Math.max(Math.ceil(loadedComments.length / 10), 1)
-				if (isLastPage) loadComments()
+				// if (isLastPage) loadComments()
+				loadComments()
 			}
 		})
 })
