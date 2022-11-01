@@ -1,6 +1,5 @@
 main {
-	/* background-image: url('{% static "img/crewdashboard/bg.jpg" %}');
-	background-size: cover; */
+	background-size: cover;
 	align-items: center;
 	display: flex;
 	font-size: 20px;
