@@ -46,7 +46,7 @@ def login_view(request):
 			user = authenticate(email=email, password=password)
 			if user:
 				login(request, user)
-				if 'next' in request.POST:
+				if 'next' in request.POST and request.POST['next']:
 					return redirect(request.POST['next'])
 				return redirect('index:index_page')			
 	else:
