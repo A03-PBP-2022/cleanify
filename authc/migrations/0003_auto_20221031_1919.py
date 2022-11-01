@@ -50,6 +50,7 @@ def add_group_permissions(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('blog', '0004_alter_comment_options_alter_post_options'),
         ('authc', '0002_auto_20221031_1853'),
     ]
 
