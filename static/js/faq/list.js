@@ -3,7 +3,7 @@ $(".thumbsUp").on('click', function () {
 	$.ajax({
 		headers: { 'X-CSRFToken': window.CSRF_TOKEN },
 		type: 'POST',
-		url: "{% url 'faq:update_thumbsUp' %}",
+		url: window.THUMBS_UP_ENDPOINT,
 		data: {
 			pk: dataPK
 		},

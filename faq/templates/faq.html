@@ -3,6 +3,9 @@
 
 {% block meta %}
 <title>Frequently Asked Questions - Cleanify</title>
+<script>
+    window.THUMBS_UP_ENDPOINT = "{% url 'faq:update_thumbsUp' %}"
+</script>
 <script defer src="{% static 'js/faq/list.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/faq/main.css' %}">
 {% endblock meta %}

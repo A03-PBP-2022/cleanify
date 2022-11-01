@@ -14,7 +14,7 @@ $(document).on('submit', '#form_post', function (e) {
 		type: "POST",
 		processData: false,
 		contentType: false,
-		url: "{% url 'crewdashboard:addlocation' %}",
+		url: window.ADD_ENDPOINT,
 		data: formData,
 		success: function (response) {
 			clear();

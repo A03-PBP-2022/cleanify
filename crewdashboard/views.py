@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.http import HttpResponse
 from django.core import serializers
 from .models import Locations
@@ -8,6 +8,11 @@ from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
+def is_crew(user):
+    return user.groups.filter(name='crew').exists()
+
+@login_required
+@user_passes_test(is_crew)
 def show_locations(request):
     return render(request, "dashboard.html")
 
@@ -16,6 +21,7 @@ def show_json(request):
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @csrf_exempt
+@login_required
 def add_new_locations(request):
     if request.method == 'POST':
         location = request.POST.get('location')

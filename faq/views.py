@@ -21,6 +21,7 @@ def json(request):
 
     return HttpResponse(data, content_type="application/json")
 
+@login_required
 def update_thumbsUp(request):
     pk = request.POST.get('pk')
     faq = FAQ.objects.get(pk=pk)
@@ -34,6 +35,7 @@ def update_thumbsUp(request):
 
     return HttpResponseRedirect('/faq')
 
+@login_required
 def add(request):
     if request.method == 'POST':
         form = FAQForm(request.POST)

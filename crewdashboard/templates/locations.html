@@ -3,6 +3,9 @@
 
 {% block meta %}
 <title>Report Trash - Cleanify</title>
+<script>
+    window.ADD_ENDPOINT = "{% url 'crewdashboard:addlocation' %}"
+</script>
 <script defer src="{% static 'js/report/form.js' %}"></script>
 <link rel="stylesheet" href="{% static 'css/report/form.css' %}">
 {% endblock meta %}
