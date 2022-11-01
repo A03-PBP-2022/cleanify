@@ -16,13 +16,6 @@ class AccountManager(BaseUserManager):
 
 		user.save(using=self._db)
 
-		if user.role == 'crew':
-			user_group = Group.objects.get_or_create(name='crew')[0]
-			user.groups.add(user_group)
-		else:
-			user_group = Group.objects.get_or_create(name='user')[0]
-			user.groups.add(user_group)
-
 		return user
 	
 	def create_superuser(self, email, username, password):
