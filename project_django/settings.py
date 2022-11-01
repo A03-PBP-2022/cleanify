@@ -40,14 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
-<<<<<<< HEAD
     'crewdashboard',
-=======
     'banksampah',
     'blog',
     'faq',
     'authc'
->>>>>>> 9fc00c7cb50549bc88a4339594273dda7c4ad18a
 ]
 
 MIDDLEWARE = [
