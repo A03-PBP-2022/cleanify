@@ -20,8 +20,6 @@
           e.preventDefault();
           var form = document.getElementById("form_post");
           var formData = new FormData(form);
-          var img = $("#image")[0].files;
-          formData.append("image",img[0]);
             $.ajax({
               type:"POST",
               processData: false,
