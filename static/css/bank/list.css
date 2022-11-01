@@ -4,15 +4,8 @@
 	--purple: #3a5a40;
 }
 
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
 main {
     background-color: #588157;
-    flex-grow: 1;
 }
 
 main h5 {

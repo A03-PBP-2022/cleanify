@@ -1,13 +1,6 @@
-body {
-	display: flex;
-	flex-direction: column;
-	min-height: 100vh;
-}
-
 main {
 	background-image: url('/static/img/report/bg.jpg');
 	background-size: cover;
-	flex-grow: 1;
 	align-items: center;
 	display: flex;
 	font-size: 20px;

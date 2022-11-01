@@ -19,3 +19,13 @@
 	--bs-bg-opacity: 1;
 	background-color: rgba(var(--bs-cleanify-rgb),var(--bs-bg-opacity)) !important;
 }
+
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+main {
+	flex-grow: 1;
+}

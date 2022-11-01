@@ -1,14 +1,7 @@
-body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
 main {
     background:url("/static/img/auth/bg1.JPEG") no-repeat;
     color: white;
     background-size: cover; 
-    flex-grow: 1;
     align-items: center;
     justify-content: center;
     display: flex;
