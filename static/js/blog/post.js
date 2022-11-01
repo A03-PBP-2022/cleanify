@@ -119,7 +119,7 @@ const emptyCommentList = () => {
 }
 
 const updateNoCommentsPlaceholder = () => {
-	if (loadComments.length) noCommentsPlaceholderEl.classList.add('d-none')
+	if (loadedComments.length) noCommentsPlaceholderEl.classList.add('d-none')
 	else noCommentsPlaceholderEl.classList.remove('d-none')
 }
 
@@ -132,9 +132,9 @@ document.addEventListener('scroll', event => {
 	loadComments(currentPage)
 })
 
-const form = document.querySelector("#comment-new-form")
+const newCommentForm = document.querySelector("#comment-new-form")
 
-if (form) form.addEventListener("submit", event => {
+if (newCommentForm) newCommentForm.addEventListener("submit", event => {
 	event.preventDefault()
 	const formData = new FormData(event.target)
 	const formProps = Object.fromEntries(formData)
@@ -149,7 +149,8 @@ if (form) form.addEventListener("submit", event => {
 		.then(response => {
 			if (response.status === 200 || response.status === 201) {
 				currentPage = Math.max(Math.ceil(loadedComments.length / 10), 1)
-				if (isLastPage) loadComments()
+				// if (isLastPage) loadComments()
+				loadComments()
 			}
 		})
 })

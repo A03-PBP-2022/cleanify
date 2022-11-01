@@ -1,6 +1,6 @@
 <nav class="navbar navbar-dark navbar-expand-xl bg-cleanify">
 	<div class="container">
-		<a class="navbar-brand" href='{% url "index:index_page" %}'><i class="bi bi-trash-fill"></i> Cleanify</a>
+		<a class="navbar-brand fs-3" href='{% url "index:index_page" %}'><i class="bi bi-trash-fill"></i> Cleanify</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -12,10 +12,10 @@
 			<div class="offcanvas-body">
 				<ul class="navbar-nav justify-content-end flex-grow-1">
 					<li class="nav-item">
-						<a class="nav-link" href='{% url "crewdashboard:addlocation" %}'><i class="bi bi-megaphone-fill"></i> Lapor Sampah</a>
+						<a class="nav-link" href='{% url "crewdashboard:addlocation" %}'><i class="bi bi-megaphone-fill"></i> Report Waste</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href='{% url "banksampah:create" %}'><i class="bi bi-bank2"></i> Bank Sampah</a>
+						<a class="nav-link" href='{% url "banksampah:create" %}'><i class="bi bi-bank2"></i> Waste Bank</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href='{% url "faq:index" %}'><i class="bi bi-question-circle-fill"></i> FAQ</a>

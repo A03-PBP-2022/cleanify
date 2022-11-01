@@ -1,0 +1,15 @@
+main {
+    background:url("/static/img/auth/bg1.JPEG") no-repeat;
+    color: white;
+    background-size: cover; 
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    font-size: 20px;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 2rem 1rem;
+}

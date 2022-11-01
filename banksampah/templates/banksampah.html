@@ -2,16 +2,16 @@
 {% load static %}
 
 {% block meta %}
-<title>Bank Sampah - Cleanify</title>
-<link rel="stylesheet" href="{% static 'css/banksampah/index.css' %}">
-<script src="{% static 'js/banksampah.js' %}"></script>
+<title>Waste Bank - Cleanify</title>
+<link rel="stylesheet" href="{% static 'css/bank/index.css' %}">
+<script src="{% static 'js/bank/index.js' %}"></script>
 {% endblock meta %}
 
 {% block content %}
-<form method="POST">
+<form method="POST" class="container-fluid">
 
-    <div class="form text-light">
-        <h1 class="title fw-bold text-center">Form Bank Sampah</h1>
+    <div class="text-light form-inside">
+        <h1 class="title fw-bold text-center">Waste Bank Form</h1>
         {% csrf_token %}
         <div class="mt-2">
             <label for="tanggal">Date</label>
@@ -36,7 +36,7 @@
         </div>
     </div>
     <button class="btn btn-submit mt-4">Submit</button>
-    <a href='{% url "banksampah:show" %}' class="btn btn-submit d-inline-block mt-2">Show My Bank</a>
+    <a href='{% url "banksampah:show" %}' class="btn btn-submit d-inline-block mt-2">Show Contents</a>
 
 </form>
 

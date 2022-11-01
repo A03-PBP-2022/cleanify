@@ -7,8 +7,11 @@ from .forms import GroupAdminForm
 
 # https://youtu.be/XJU9vRARkGo
 
+admin.site.register(User)
+admin.site.unregister(User)
+
 class AccountAdmin(UserAdmin):
-    list_display = ('email','username','is_admin','is_staff')
+    list_display = ('email','username','is_staff')
     search_fields = ('email','username',)
     readonly_fields=('id',)
 

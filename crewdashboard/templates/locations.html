@@ -1,90 +1,46 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Report Trash - Cleanify</title>
+<script>
+    window.ADD_ENDPOINT = "{% url 'crewdashboard:addlocation' %}"
+</script>
+<script defer src="{% static 'js/report/form.js' %}"></script>
+<link rel="stylesheet" href="{% static 'css/report/form.css' %}">
+{% endblock meta %}
+
 {% block content %}
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="shortcut icon" href="#">
-    <h2 style = "font-style: italic; margin-top: 90px; margin-bottom: 40px; text-align: center; margin-left: auto; margin-right:auto">Know Any Need-to-Clean Locations?</h2>
-    <script>
-        function clear(){
-          var form = document.getElementById("form_post");
-          form.reset();
-        }
+<div class="container-fluid my-4">
+    <h2 class="text-center fst-italic">Welcome, {{ user }}!</h2>
 
-  
-        // Melakukan GET POST ketika submit form
-        $(document).on('submit', '#form_post', function(e){
-          e.preventDefault();
-          var form = document.getElementById("form_post");
-          var formData = new FormData(form);
-            $.ajax({
-              type:"POST",
-              processData: false,
-              contentType: false,
-              url:"{% url 'crewdashboard:addlocation' %}",
-              data: formData,   
-              success: function(response) {
-                clear();
-                console.log("hai");
-              },
-            })
-        });
+    <form method="POST" id="form_post" action="" entype="multipart/form-data">
+        {% csrf_token %}
+        <tr>
+            <div class="form-group mt-3">
+                <label class="heading-5" for="location">Address </label>
+                <input id="location" type="text" name="location" placeholder="Need-to-Clean Location" class="form-control" minlength="10" required>
+            </div>
+        </tr>
 
-      
-    </script>
-</head>
+        <tr>
+            <div class="form-group mt-3">
+                <label class="heading-5" for="urgency">Urgency </label>
+                <input id="urgency" type="number" name="urgency" placeholder="Urgency level out of 5" class="form-control" min="1" max="5" required>
+            </div>
+        </tr>
 
-<form method="POST" id = "form_post" action="" entype="multipart/form-data" >
-    {% csrf_token %}
-    <tr>
-        <div class = "form-group mt-3">
-        <h5>Address </h5>
-        <input id="location" type="text" name="location" placeholder="Need-to-Clean Location" class="form-control" minlength="10"required>
+        <tr>
+            <div class="form-group mt-3">
+                <label class="heading-5" for="description">Description </label>
+                <input id="description" type="text" name="description" placeholder="Description" class="form-control" minlength="10" required>
+            </div>
+        </tr>
+
+        <div class="button mt-3">
+            <button id="submit" type="submit" class="btn btn-primary d-flex mx-auto" onclick="clear()">Submit</button>
         </div>
-    </tr>
-
-    <tr>
-        <div class = "form-group mt-3">
-        <h5>Urgency </h5>
-        <input id="urgency"type="number" name="urgency" placeholder="Urgency level out of 5" class="form-control" min="1" max="5" required>
-        </div>
-    </tr>
-
-    <tr>
-        <div class = "form-group mt-3">
-        <h5>Description </h5>
-        <input id="description"type="text" name="description" placeholder="Description" class="form-control" minlength="10" required>
-        </div>
-      </tr>
-
-    <div class="button mt-3">
-        <button id = "submit" type="submit" class="btn btn-primary" onclick="clear()" >Submit</button>
-    </div>
-</form>
-<!-- <p><button class="btn btn-warning btn-sm px-3"><a href="{% url 'crewdashboard:addlocation' %}">Submit</a></button></p> -->
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@700&family=Poppins:wght@400;500;600&display=swap');
-  *{
-      box-sizing: border-box;
-      font-family: "Poppins";
-  }
-  body{
-      min-height: 100vh;
-      background-image: url("https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2069&q=80");
-
-  } button{
-    position: absolute;
-    left: 50%;
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-  } form{
-    width: 50%;
-    margin-left : 25%
-  }
-</style>
+    </form>
+</div>
 
 {% endblock content %}

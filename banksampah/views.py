@@ -4,10 +4,12 @@ from banksampah.forms import FormBank
 from banksampah.models import Bank
 from django.core import serializers
 from django.http import HttpResponse
-
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+
+@login_required
 def create_bank(request):
     context ={}
     context['form']= FormBank()

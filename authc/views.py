@@ -2,6 +2,8 @@ from django.http.response import JsonResponse
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
+from .models import User
+from django.contrib.auth.models import Group
 import json
 from .forms import RegistrationForm, UserAuthenticationForm
 
@@ -46,6 +48,17 @@ def login_view(request):
 			user = authenticate(email=email, password=password)
 			if user:
 				login(request, user)
+				user_authc = User.objects.get(pk=user.pk)
+
+				print(user_authc.role)
+
+				if user_authc.role == 'crew':
+					user_group = Group.objects.get_or_create(name='crew')[0]
+					user_authc.groups.add(user_group)
+				elif user_authc.role == 'user':
+					user_group = Group.objects.get_or_create(name='user')[0]
+					user_authc.groups.add(user_group)
+
 				if 'next' in request.POST and request.POST['next']:
 					return redirect(request.POST['next'])
 				return redirect('index:index_page')			

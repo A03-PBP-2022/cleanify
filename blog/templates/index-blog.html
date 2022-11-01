@@ -6,7 +6,13 @@ Blog
 {% endblock title %}
 
 {% block content-blog %}
-<h1>Blog</h1>
+<header>
+	<h1>Cleanify Blog</h1>
+	<p class="mb-3">Articles about waste and the enviroment, for aware readers.</p>
+	{% if perms.blog.add_posts %}
+	<a href='{% url "blog:create_post" %}' class="btn btn-primary">Create new post</a>
+	{% endif %}	
+</header>
 
 {% for post in posts %}<article class="post-list">
 	<header class="post-list-header article-header">

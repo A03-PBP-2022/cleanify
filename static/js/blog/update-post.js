@@ -1,4 +1,4 @@
-const form = document.querySelector("#add-form")
+const form = document.querySelector("#post-form")
 
 form.addEventListener("submit", event => {
 	event.preventDefault()
