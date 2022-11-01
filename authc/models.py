@@ -14,32 +14,41 @@ class AccountManager(BaseUserManager):
 		)
 		user.set_password(password)
 
+		user.save(using=self._db)
+
 		if user.role == 'crew':
-			user_group = Group.objects.get_or_create(name='crew')
+			user_group = Group.objects.get_or_create(name='crew')[0]
 			user.groups.add(user_group)
 		else:
-			user_group = Group.objects.get_or_create(name='user')
+			user_group = Group.objects.get_or_create(name='user')[0]
 			user.groups.add(user_group)
 
-		user.save(using=self._db)
 		return user
 	
 	def create_superuser(self, email, username, password):
-		user = self.create_user(
+		if not email:
+			raise ValueError('Users must have an email address')
+		if not username:
+			raise ValueError('Users must have a username')
+
+		user = self.model(
 			email=self.normalize_email(email),
-			password=password,
 			username=username,
 		)
-		user.is_admin = True
+		user.set_password(password)
+
 		user.is_staff = True
 		user.is_superuser = True
 		user.save(using=self._db)
+
+		user_group = Group.objects.get_or_create(name='administrator')[0]
+		user.groups.add(user_group)
+
 		return user
 
 class User(AbstractBaseUser, PermissionsMixin):
 	email = models.EmailField(verbose_name="email", max_length=60, unique=True)
 	username = models.CharField(max_length=30, unique=True)
-	is_admin = models.BooleanField(default=False)
 	is_active = models.BooleanField(default=True)
 	is_staff = models.BooleanField(default=False)
 	is_superuser = models.BooleanField(default=False)
