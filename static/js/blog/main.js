@@ -1,6 +1,3 @@
-console.log(123)
-console.log(document.querySelectorAll('textarea.expand'))
-
 ;[...document.querySelectorAll('textarea.expand')].forEach(el => {
 	const offsetHeight = el.offsetHeight
 	el.addEventListener('input', () => {

@@ -132,9 +132,9 @@ document.addEventListener('scroll', event => {
 	loadComments(currentPage)
 })
 
-const form = document.querySelector("#comment-new-form")
+const newCommentForm = document.querySelector("#comment-new-form")
 
-if (form) form.addEventListener("submit", event => {
+if (newCommentForm) newCommentForm.addEventListener("submit", event => {
 	event.preventDefault()
 	const formData = new FormData(event.target)
 	const formProps = Object.fromEntries(formData)
