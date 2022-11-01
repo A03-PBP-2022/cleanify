@@ -1,4 +1,6 @@
 from django.db import models
+# from django.contrib.auth.models import User
+from authc.models import User
 # Create your models here.
 
 PILIHAN_SAMPAH = (
@@ -8,6 +10,7 @@ PILIHAN_SAMPAH = (
 )
 
 class Bank(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default='default')
     jenis = models.CharField(max_length=10)
     alamat = models.TextField(max_length=100)
     tanggal = models.DateField()
