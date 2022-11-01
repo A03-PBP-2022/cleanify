@@ -2,7 +2,9 @@ import datetime
 from django.shortcuts import render
 from banksampah.forms import FormBank
 from banksampah.models import Bank
-from django.http import JsonResponse
+from django.core import serializers
+from django.http import HttpResponse
+
 
 
 # Create your views here.
@@ -27,7 +29,7 @@ def create_bank(request):
 def show_bank(request):
     data_bank = Bank.objects.all()
     context = {
-    'list_bank': data_bank,
+        'list_bank': data_bank,
     }
     return render(request, "showbank.html", context)
 
@@ -35,3 +37,7 @@ def delete_bank(request, id):
     bank = Bank.objects.get(id=id)
     bank.delete()
     return show_bank(request)
+
+def show_banksampah_json(request):
+    data_banksampah = serializers.serialize("json", Bank.objects.all())
+    return HttpResponse(data_banksampah, content_type="application/json")
