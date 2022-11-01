@@ -23,5 +23,6 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('faq/', include('faq.urls')),
     path('auth/', include('authc.urls')),
+    path('laporansampah/', include('crewdashboard.urls')),
 ]
 
