@@ -6,7 +6,7 @@ function getBanks() {
 	console.log("in getTasks")
 	$.ajax({
 		type: "GET",
-		url: "/banksampah/json/",
+		url: "/bank/json/",
 	}).done((data) => {
 		console.log("about to showTasks")
 		showBanks(data)
@@ -42,7 +42,7 @@ function showBanks(data) {
 function deleteTask(id) {
 	$.ajax({
 		type: "GET",
-		url: "/banksampah/delete/" + id,
+		url: "/bank/delete/" + id,
 		data: { csrfmiddlewaretoken: window.CSRF_TOKEN, pk: id }
 	}).done((data) => {
 		getBanks();

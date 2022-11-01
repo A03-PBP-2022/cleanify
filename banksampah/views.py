@@ -14,12 +14,14 @@ def create_bank(request):
     context ={}
     context['form']= FormBank()
     if request.method == 'POST':
+        user = request.user
         jenis = request.POST.get('jenis')
         alamat = request.POST.get('alamat')
         tanggal = request.POST.get('tanggal')
         kontak = request.POST.get('kontak')
         
         new_project = Bank(
+            user=user,
             jenis=jenis,
             alamat=alamat,
             tanggal=tanggal,
@@ -29,7 +31,8 @@ def create_bank(request):
     return render(request, 'banksampah.html', context)
 
 def show_bank(request):
-    data_bank = Bank.objects.all()
+    user = request.user
+    data_bank = Bank.objects.filter(user=user)
     context = {
         'list_bank': data_bank,
     }
@@ -41,5 +44,6 @@ def delete_bank(request, id):
     return show_bank(request)
 
 def show_banksampah_json(request):
-    data_banksampah = serializers.serialize("json", Bank.objects.all())
+    user = request.user
+    data_banksampah = serializers.serialize("json", Bank.objects.filter(user=user))
     return HttpResponse(data_banksampah, content_type="application/json")
