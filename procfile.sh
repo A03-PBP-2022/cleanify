@@ -7,4 +7,5 @@
 
 python manage.py migrate blog 0004_alter_comment_options_alter_post_options
 python manage.py migrate crewdashboard 0004_rename_locations_location
+python manage.py migrate authc 0006_group_perms
 python manage.py migrate
