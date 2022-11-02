@@ -5,6 +5,7 @@ from django.core import serializers
 from .models import Locations
 import datetime
 from django.views.decorators.csrf import csrf_exempt
+from .forms import FormReport
 
 # Create your views here.
 
@@ -23,17 +24,44 @@ def show_json(request):
 @csrf_exempt
 @login_required
 def add_new_locations(request):
+    # form = FormReport()
+    # if request.method == "POST":
+    #     form = FormReport(request.POST)
+    #     if form.is_valid():
+    #         dlocation = form.cleaned_data["location"]
+    #         durgency = form.cleaned_data["urgency"]
+    #         ddescription = form.cleaned_data["description"]
+    #         dtime = datetime.datetime.now()
+    #         updated = Locations(location = dlocation, urgency = durgency, description =ddescription, date = dtime)
+    #         updated.save()
+    # context = {
+    #     'form': form,
+    # }
+    # return render(request, "locations.html", context)
+    context ={}
+    context['form']= FormReport()
     if request.method == 'POST':
         location = request.POST.get('location')
         urgency = request.POST.get('urgency')
         description = request.POST.get('description')
-
-        new_location = Locations.objects.create(
+        new_location = Locations(
             date = datetime.datetime.now(),
             location = location,
             urgency = urgency,
             description = description,
-            )
+        )
         new_location.save()
-        return HttpResponse("")
-    return render(request, 'locations.html')
+    return render(request, 'locations.html', context)
+    # if request.method == 'POST':
+    #     location = request.POST.get('location')
+    #     urgency = request.POST.get('urgency')
+    #     description = request.POST.get('description')
+    #     new_location = Locations.objects.create(
+    #         date = datetime.datetime.now(),
+    #         location = location,
+    #         urgency = urgency,
+    #         description = description,
+    #         )
+    #     new_location.save()
+    #     return HttpResponse("")
+    # return render(request, 'locations.html')
