@@ -39,7 +39,7 @@ Modul ini merupakan halaman yang berisikan form untuk user melakukan setor sampa
 
 ### 4. FAQ
 
-Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi ini. User juga dapat mengirimkan *thumbs up* untuk menandakan bahwa sebuah pertanyaan berguna bagi para pembaca, yang akan membuat pertanyaan tersebut berada di atas daftar pertanyaan. Modul ini dapat dilihat dan diakses oleh User.
+Modul ini berfungsi untuk menampilkan daftar pertanyaan dan jawaban yang sering ditanyakan mengenai aplikasi ini. User juga dapat mengirimkan *thumbs up* untuk menandakan bahwa sebuah pertanyaan berguna bagi para pembaca. Pertanyaan dan jawaban dengan jumlah *thumbs up* terbanyak akan ditampilkan di paling atas daftar pertanyaan. Modul ini dapat dilihat dan diakses oleh User.
 
 ## 5. Blog
 
