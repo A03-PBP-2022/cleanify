@@ -49,7 +49,8 @@ Modul ini berisi sistem blog yang berisi artikel-artikel yang berkaitan dengan s
 
 Role pada Cleanify terbagi menjadi tiga.
 
-1. User: Pengguna biasa/umum
-2. Crew: Petugas yang melihat laporan wilayah sampah dan tugas lainnya
-3. Admin: Pengelola aplikasi
+1. User: Pengguna biasa yang terdaftar di dalam aplikasi. Ini berbeda dengan pengguna situs yang tidak terdaftar.
+2. Crew: Petugas-petugas yang berkaitan dengan penindaklanjutan masukan-masukan pengguna. Merekalah yang melihat laporan wilayah sampah, bank sampah, dan menindaklanjuti isinya.
+3. Moderator: Staf yang beraksi untuk melakukan moderasi terhadap input pengguna dalam modul-modul yang dapat dilihat oleh umum, seperti kolom komentar pada blog.
+4. Administrator: Staf yang mengelola aplikasi. Kelompok ini akan memiliki akses superuser.
 

@@ -28,9 +28,11 @@
         <br>
         {% endfor %}
     </div>
+    {% if perms.add_faq %}
     <a class="btn btn-success fw-bold" href="{% url 'faq:add' %}">
         Add New Question
     </a>
+    {% endif %}
 
 </div>
 
