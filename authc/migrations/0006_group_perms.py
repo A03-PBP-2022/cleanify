@@ -58,6 +58,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('authc', '0005_remove_user_is_admin'),
+        ('crewdashboard', '0004_rename_locations_location')
     ]
 
     operations = [
