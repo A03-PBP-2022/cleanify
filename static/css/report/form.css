@@ -1,5 +1,5 @@
 main {
-	background-image: url('/static/img/report/bg.jpg');
+	background:url("/static/img/auth/bg1.JPEG") no-repeat;
 	background-size: cover;
 	align-items: center;
 	display: flex;
