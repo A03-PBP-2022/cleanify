@@ -36,4 +36,4 @@ def add_new_locations(request):
             )
         new_location.save()
         return HttpResponse("")
-    return render(request, 'locations.html');
+    return render(request, 'locations.html')
