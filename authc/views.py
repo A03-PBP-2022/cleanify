@@ -16,6 +16,7 @@ def registration_view(request):
 	if request.POST and is_ajax(request):
 		form = RegistrationForm(request.POST)
 		data = {}
+		print("haii")
 		if form.is_valid():
 			form.save()
 			data['success'] = True
