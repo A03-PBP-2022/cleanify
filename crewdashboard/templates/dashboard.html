@@ -7,23 +7,23 @@
     window.JSON_URL = "{% url 'crewdashboard:json' %}"
 </script>
 <script defer src="{% static 'js/report/dashboard.js' %}"></script>
-<link rel="stylesheet" href="{% static 'css/report/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/report/dashboard.css' %}"></link>
 {% endblock meta %}
 
 {% block content %}
-<div class="container my-4">
+<div class="container my-4" id="container">
 
     <h2 class="text-center fst-italic mt-4 mb-4">Cleaning Crews, We Need Your Help!</h2>
 
-    <div class="card align-items-center justify-content-center py-2 mb-4">
+    <div id="card" class="card align-items-center justify-content-center py-2 mb-4">
         <form class="text-center" method="POST">
             {% csrf_token %}
             <div class="d-flex flex-start justify-content-around" id="card-deck" style="flex-wrap: wrap">
             </div>
         </form>
     </div>
-    <div class=" text-center">
-        <a href="{% url 'authc:logout' %}" class="btn btn-outline-light btn-warning btn-sm px-3">Logout</a>
+    <div class="text-center">
+        <a href="{% url 'authc:logout' %}" class="btn btn-primary">Logout</a>
     </div>
 
 </div>

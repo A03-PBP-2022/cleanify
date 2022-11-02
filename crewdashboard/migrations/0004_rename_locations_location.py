@@ -6,7 +6,7 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('crewdashboard', '0002_remove_locations_image'),
+        ('crewdashboard', '0003_alter_locations_date'),
     ]
 
     operations = [
