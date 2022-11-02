@@ -18,8 +18,8 @@
 							<i class="bi bi-megaphone-fill"></i> Waste Report
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-							<li><a class="dropdown-item" href='{% url "crewdashboard:addlocation" %}'>Report Waste</a></li>
-							<li><a class="dropdown-item" href='{% url "crewdashboard:show_locations" %}'>View Reports</a></li>
+							<li><a class="dropdown-item" href='{% url "crewdashboard:addlocation" %}'>Report Location</a></li>
+							<li><a class="dropdown-item" href='{% url "crewdashboard:show_locations" %}'>View Locations</a></li>
 						</ul>
 					</li>
 					{% elif perms.crewdashboard.add_location %}
