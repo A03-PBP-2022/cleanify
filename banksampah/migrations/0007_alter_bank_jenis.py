@@ -6,13 +6,8 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('banksampah', '0006_remove_bank_kodepos_remove_bank_kota'),
+        ('banksampah', '0001_initial'),
     ]
 
     operations = [
-        migrations.AlterField(
-            model_name='bank',
-            name='jenis',
-            field=models.CharField(max_length=10),
-        ),
     ]
