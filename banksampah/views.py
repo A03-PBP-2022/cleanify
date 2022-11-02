@@ -4,12 +4,12 @@ from banksampah.forms import FormBank
 from banksampah.models import Bank
 from django.core import serializers
 from django.http import HttpResponse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, permission_required
 
 
 # Create your views here.
 
-@login_required
+@permission_required('banksampah:add_bank')
 def create_bank(request):
     context ={}
     context['form']= FormBank()
@@ -30,6 +30,7 @@ def create_bank(request):
         new_project.save()
     return render(request, 'banksampah.html', context)
 
+@permission_required('banksampah:view_bank')
 def show_bank(request):
     user = request.user
     data_bank = Bank.objects.filter(user=user)
@@ -38,11 +39,13 @@ def show_bank(request):
     }
     return render(request, "showbank.html", context)
 
+@permission_required('banksampah:delete_bank')
 def delete_bank(request, id):
     bank = Bank.objects.get(id=id)
     bank.delete()
     return show_bank(request)
 
+@permission_required('banksampah:view_bank')
 def show_banksampah_json(request):
     user = request.user
     data_banksampah = serializers.serialize("json", Bank.objects.filter(user=user))

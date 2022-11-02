@@ -11,23 +11,71 @@
 			</div>
 			<div class="offcanvas-body">
 				<ul class="navbar-nav justify-content-end flex-grow-1">
-					{% if user.groups.all.0.name == 'crew' %}
+
+					{% if perms.crewdashboard.add_location and perms.crewdashboard.view_location %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-megaphone-fill"></i> Waste Report
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+							<li><a class="dropdown-item" href='{% url "crewdashboard:addlocation" %}'>Report Waste</a></li>
+							<li><a class="dropdown-item" href='{% url "crewdashboard:show_locations" %}'>View Reports</a></li>
+						</ul>
+					</li>
+					{% elif perms.crewdashboard.add_location %}
 					<li class="nav-item">
 						<a class="nav-link" href='{% url "crewdashboard:addlocation" %}'><i class="bi bi-megaphone-fill"></i> Report Waste</a>
+					</li>
+					{% elif perms.crewdashboard.view_location %}
+					<li class="nav-item">
+						<a class="nav-link" href='{% url "crewdashboard:show_locations" %}'><i class="bi bi-megaphone-fill"></i> View Waste Reports</a>
 					</li>
 					{% endif %}
-					<li class="nav-item">
-						<a class="nav-link" href='{% url "crewdashboard:addlocation" %}'><i class="bi bi-megaphone-fill"></i> Report Waste</a>
+
+					{% if perms.banksampah.add_bank and perms.banksampah.view_bank %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-bank2"></i> Waste Bank
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+							<li><a class="dropdown-item" href='{% url "banksampah:create" %}'>Add Waste</a></li>
+							<li><a class="dropdown-item" href='{% url "banksampah:show" %}'>View Bank</a></li>
+						</ul>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" href='{% url "banksampah:create" %}'><i class="bi bi-bank2"></i> Waste Bank</a>
+					{% endif %}
+
+					{% if perms.faq.add_faq %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-question-circle-fill"></i> FAQ
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+							<li><a class="dropdown-item" href='{% url "faq:index" %}'>View List</a></li>
+							<li><a class="dropdown-item" href='{% url "faq:add" %}'>Add New</a></li>
+						</ul>
 					</li>
+					{% else %}
 					<li class="nav-item">
 						<a class="nav-link" href='{% url "faq:index" %}'><i class="bi bi-question-circle-fill"></i> FAQ</a>
 					</li>
+					{% endif %}
+
+					{% if perms.blog.add_post %}
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							<i class="bi bi-newspaper"></i> Blog
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+							<li><a class="dropdown-item" href='{% url "blog:index" %}'>Index</a></li>
+							<li><a class="dropdown-item" href='{% url "blog:create_post" %}'>Create Post</a></li>
+						</ul>
+					</li>
+					{% else %}
 					<li class="nav-item">
 						<a class="nav-link" href='{% url "blog:index" %}'><i class="bi bi-newspaper"></i> Blog</a>
 					</li>
+					{% endif %}
+
 					{% if request.user.is_authenticated %}
 					<li class="nav-item dropdown">
 						<a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
