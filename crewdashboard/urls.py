@@ -7,4 +7,5 @@ urlpatterns = [
     path('dashboard/', show_locations, name='show_locations'),
     path('json/', show_json, name='json'),
     path('', add_new_locations, name='addlocation'),
+    path('delete/', delete_card, name='delete_card'),
 ]
