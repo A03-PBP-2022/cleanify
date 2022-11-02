@@ -3,4 +3,13 @@ main {
 	align-items: center;
 	display: flex;
 	font-size: 20px;
+} #card{
+	border: none;
+} .card-group{
+	min-width: 1000px;
+} @media (max-width: 600px) {
+    .card-deck {
+      display: flex;
+      flex-direction: column;
+    }
 }
