@@ -1,8 +1,9 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.utils import timezone
 
 class Locations(models.Model):
-    date= models.DateField(auto_now_add=True)
+    date= models.DateField(default=timezone.now)
     location = models.CharField(max_length=200, null=True)
     urgency= models.IntegerField(
         null =True, 
