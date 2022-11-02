@@ -1,6 +1,5 @@
 from django.urls import path
-from crewdashboard.views import add_new_locations, show_locations, show_json
-from authc.views import logout_view
+from crewdashboard.views import add_new_locations, show_locations, show_json, delete_card
 app_name = 'crewdashboard'
 
 urlpatterns = [
