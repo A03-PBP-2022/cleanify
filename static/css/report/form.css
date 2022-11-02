@@ -1,5 +1,5 @@
 main {
-	background-image:url('/static/img/report/bg.jpg');
+	background-image: url('/static/img/report/bg.jpg');
 	background-size: cover;
 	align-items: center;
 	display: flex;
