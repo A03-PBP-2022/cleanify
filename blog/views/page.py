@@ -29,7 +29,7 @@ def view_post(request, id):
 		'comments': comments,
 	})
 
-@permission_required('blog:create_post')
+@permission_required('blog.create_post')
 def create_post(request):
 
 	return render(request, "post-create.html", {})

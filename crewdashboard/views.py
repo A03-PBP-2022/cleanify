@@ -10,24 +10,24 @@ from django.shortcuts import redirect
 
 # Create your views here.
 
-@permission_required('crewdashboard:view_location')
+@permission_required('crewdashboard.view_location')
 def show_locations(request):
     return render(request, "dashboard.html")
 
-@permission_required('crewdashboard:delete_location')
+@permission_required('crewdashboard.delete_location')
 def delete_card(request):
     if request.method == "POST":
         card = Location.objects.get(id=request.POST["id"])
         card.delete()
     return redirect('todolist:show_todolist')
 
-@permission_required('crewdashboard:view_location')
+@permission_required('crewdashboard.view_location')
 def show_json(request):
     data = Location.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")
 
 @csrf_exempt
-@permission_required('crewdashboard:add_location')
+@permission_required('crewdashboard.add_location')
 def add_new_locations(request):
     context ={}
     context['form']= FormReport()
