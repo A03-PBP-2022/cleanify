@@ -8,7 +8,7 @@ function updateCards() {
 		let string = ``
 		data.forEach(report => {
 			string += `
-			<div class="card-group" >
+			<div class="card-group">
 				<div class = "card mb-2 bg-light">
 					<div class="card-header">
 						<small class = "card-date">${report.fields.date}</small>
