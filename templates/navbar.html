@@ -13,7 +13,7 @@
 				<ul class="navbar-nav justify-content-end flex-grow-1">
 					{% if user.groups.all.0.name == 'crew' %}
 					<li class="nav-item">
-						<a class="nav-link" href='{% url "crewdashboard:show_locations" %}'><i class="bi bi-megaphone-fill"></i> Reported Locations</a>
+						<a class="nav-link" href='{% url "crewdashboard:show_locations" %}'><i class="bi bi-megaphone-fill"></i> Reported Locations </a>
 					</li>
 					{% endif %}
 					<li class="nav-item">
