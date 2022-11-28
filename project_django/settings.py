@@ -149,3 +149,5 @@ for directory in [*STATICFILES_DIRS, STATIC_ROOT]:
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/auth/login/'
+
+CSRF_TRUSTED_ORIGINS = ['https://cleanifyid.up.railway.app']
