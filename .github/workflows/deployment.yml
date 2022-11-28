@@ -22,18 +22,11 @@ jobs:
         if [ "${{ secrets.HEROKU_API_KEY }}" == "" ] || [ "${{ secrets.RAILWAY_TOKEN }}" == "" ] ; then
           exit 1
         fi
-    - name: Use Node 12
-      uses: actions/setup-node@v1
-      with:
-        node-version: 12.x
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Install Railway
-      run: npm i -g @railway/cli
-    - name: Deploy to Railway
-      run: railway up
-      env:
-        RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+    - uses: bervProject/railway-deploy@0.0.7-alpha
+      with:
+        railway_token: ${{ secrets.RAILWAY_TOKEN }}
     - name: Create GitHub deployment
       uses: chrnorm/deployment-action@v2
       with:
