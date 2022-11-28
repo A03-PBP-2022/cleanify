@@ -19,12 +19,13 @@ jobs:
     steps:
     - name: Check secrets
       run: |
-        if [ "${{ secrets.HEROKU_API_KEY }}" == "" ] || [ "${{ secrets.RAILWAY_TOKEN }}" == "" ] ; then
+        if [ "${{ secrets.RAILWAY_TOKEN }}" == "" ] || [ "${{ secrets.HEROKU_APP_NAME }}" == "" ] ; then
           exit 1
         fi
     - name: Checkout code
       uses: actions/checkout@v3
-    - uses: bervProject/railway-deploy@0.0.7-alpha
+    - name: Deploy to Railway
+      uses: bervProject/railway-deploy@0.0.7-alpha
       with:
         railway_token: ${{ secrets.RAILWAY_TOKEN }}
     - name: Create GitHub deployment
