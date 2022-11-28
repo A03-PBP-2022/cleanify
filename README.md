@@ -1,9 +1,9 @@
 # Cleanify
 
 [![Status deployment](https://img.shields.io/github/workflow/status/A03-PBP-2022/proyek/Deployment?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/deployment.yml)
-[![Aplikasi Heroku](https://img.shields.io/badge/heroku-cleanifyid-blue?logo=heroku&logoColor=white)](https://cleanifyid.herokuapp.com/)
+[![Aplikasi Railway](https://img.shields.io/badge/railway-cleanifyid-blue?logo=railway&logoColor=white)](https://cleanifyid.up.railway.app/)
 
-🌐 Aplikasi Heroku: https://cleanifyid.herokuapp.com/
+🌐 Aplikasi Railway: https://cleanifyid.up.railway.app/
 
 ## 👨‍👨‍👧‍👧 Anggota
 
