@@ -33,7 +33,7 @@ Modul ini berfungsi sebagai autentikasi user menggunakan aplikasi. Tedapat prose
 
 ### 2. Pelaporan Wilayah Sampah
 
-![](https://img.shields.io/badge/bagian-Muhammad_Rafi_Adiwibowo-blue)
+![](https://img.shields.io/badge/bagian-Thalia_Fortuna-blue)
 
 Modul ini berfungsi sebagai tempat melaporkan wilayah sampah yang perlu dibersihkan oleh crew, yang dikhususkan untuk user untuk diisi. Laporan ini nanti akan ditunjukkan pada dasbor laporan wilayah sampah.
 
@@ -41,7 +41,7 @@ Modul ini juga berisi dasbor yang berisi laporan-laporan wilayah sampah yang per
 
 ### 3. Bank Sampah
 
-![](https://img.shields.io/badge/bagian-Thalia_Fortuna-blue)
+![](https://img.shields.io/badge/bagian-Muhammad_Rafi_Adiwibowo-blue)
 
 Modul ini merupakan halaman yang berisikan form untuk user melakukan setor sampah ke dalam tempat bank sampah tersebut. Setelah melakukan pengisian form tersebut, maka akan dilakukannya pengambilan sampah tersebut.
 
