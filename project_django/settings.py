@@ -153,5 +153,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_URL = '/auth/login/'
 
+# CORS stuff (needed for Railway and Flutter)
+# https://pypi.org/project/django-cors-headers/
+# https://pub.dev/packages/pbp_django_auth
+
+CSRF_TRUSTED_ORIGINS = ['https://cleanifyid.up.railway.app']
 CORS_ALLOW_ALL_ORIGINS = True
-CORS_ALLOW_HEADERS = default_headers + ('cache-control', 'access-control-allow-origin', )
+CORS_ALLOW_HEADERS = default_headers + ('cache-control', 'access-control-allow-origin')
+CORS_ALLOW_CREDENTIALS = True
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SAMESITE = 'None'
+SESSION_COOKIE_SAMESITE = 'None'
