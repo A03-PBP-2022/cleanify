@@ -1,5 +1,5 @@
 from rest_framework import routers, serializers, viewsets, pagination
-from rest_framework_extensions import routers as ext_routers
+from rest_framework_extensions import routers as ext_routers, mixins as ext_mixins
 from authc.models import User
 from blog.forms import PostForm, CommentForm
 from blog.models import Post, Comment
@@ -24,7 +24,7 @@ class PostSerializer(serializers.ModelSerializer):
         model = Post
         fields = ['pk', 'author', 'title', 'content', 'created_timestamp', 'modified_timestamp']
     
-class PostViewSet(viewsets.ModelViewSet):
+class PostViewSet(ext_mixins.NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-created_timestamp')
     serializer_class = PostSerializer
     pagination_class = StandardResultsSetPagination
@@ -36,7 +36,7 @@ class CommentSerializer(serializers.ModelSerializer):
         model = Comment
         fields = ['pk', 'author', 'content', 'post', 'created_timestamp', 'modified_timestamp',]
     
-class CommentViewSet(viewsets.ModelViewSet):
+class CommentViewSet(ext_mixins.NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     pagination_class = StandardResultsSetPagination
