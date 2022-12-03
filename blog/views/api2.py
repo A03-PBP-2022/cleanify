@@ -1,4 +1,4 @@
-from rest_framework import routers, serializers, viewsets, pagination
+from rest_framework import routers, serializers, viewsets, pagination, decorators, status
 from rest_framework_extensions import routers as ext_routers, mixins as ext_mixins
 from authc.models import User
 from blog.forms import PostForm, CommentForm
@@ -9,7 +9,15 @@ class StandardResultsSetPagination(pagination.PageNumberPagination):
     page_size = 10
     page_size_query_param = 'page_size'
 
-class LimitedUserSerializer(serializers.ModelSerializer):
+class ReadOnlyModelSerializer(serializers.ModelSerializer):
+    def get_fields(self, *args, **kwargs):
+        fields = super().get_fields(*args, **kwargs)
+        for field in fields:
+            fields[field].read_only = True
+        return fields
+    # pass
+
+class LimitedUserSerializer(ReadOnlyModelSerializer):
     username = serializers.CharField()
     nama = serializers.CharField()
 
@@ -28,9 +36,27 @@ class PostViewSet(ext_mixins.NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Post.objects.all().order_by('-created_timestamp')
     serializer_class = PostSerializer
     pagination_class = StandardResultsSetPagination
+
+    author = serializers.HiddenField(
+        default=serializers.CurrentUserDefault(),
+    )
+
+    def create(self, request, *args, **kwargs):
+        post = Post()
+        post.author = request.user
+        serializer = self.serializer_class(post, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
     
 class CommentSerializer(serializers.ModelSerializer):
-    author = LimitedUserSerializer()
+    author = LimitedUserSerializer(required=False)
+
+    # def perform_create(self, serializer):
+    #     serializer.save(user=self.request.user)
 
     class Meta:
         model = Comment
@@ -40,18 +66,21 @@ class CommentViewSet(ext_mixins.NestedViewSetMixin, viewsets.ModelViewSet):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
     pagination_class = StandardResultsSetPagination
-        
-    # def list(self, request, post_id):
-    #     post = Post.objects.filter(pk=post_id).first()
-    #     queryset = Comment.objects.filter(post=post)
-    #     serializer = CommentSerializer(queryset, many=True)
-    #     return Response(serializer.data)
-    
-    # def retrieve(self, request, post_id, pk):
-    #     post = Post.objects.filter(pk=post_id).first()
-    #     comment = Comment.objects.filter(post=post, pk=pk).first()
-    #     serializer = CommentSerializer(comment)
-    #     return Response(serializer.data)
+
+    author = serializers.HiddenField(
+        default=serializers.CurrentUserDefault(),
+    )
+
+    def create(self, request, *args, **kwargs):
+        # print(f"PK: {request.user.id}")
+        comment = Comment()
+        comment.author = request.user
+        serializer = self.serializer_class(comment, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 router = ext_routers.ExtendedDefaultRouter()
 router.register(r'posts', PostViewSet) \
