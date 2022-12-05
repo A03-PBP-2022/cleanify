@@ -7,6 +7,7 @@ from django.contrib.auth.models import Group
 import json
 from .forms import RegistrationForm, UserAuthenticationForm
 from django.contrib import messages
+from django.views.decorators.csrf import csrf_exempt
 
 def registration_view(request):
 	context = {}
@@ -66,6 +67,7 @@ def logout_view(request):
 	logout(request)
 	return redirect('authc:login') 
 
+@csrf_exempt
 def api_login(request):
 
 	email = request.POST['email']
@@ -86,7 +88,8 @@ def api_login(request):
 			"status": False,
 			"message": "Login failed! Check your username and/or password."
 		}, status=401)
-	
+
+@csrf_exempt
 def api_logout(request):
 
 	logout(request)
