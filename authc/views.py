@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate, logout
 from .models import User
-from django.contrib.auth.models import Group
+from django.contrib.auth.models import Group, Permission
 import json
 from .forms import RegistrationForm, UserAuthenticationForm
 from django.contrib import messages
@@ -78,9 +78,11 @@ def api_login(request):
 		user_authc = User.objects.get(pk=user.pk)
 		_update_user_roles(user_authc)
 		
+		print(user_info(request.user))
 		return JsonResponse({
 			"status": True,
-			"message": "Login success!"
+			"message": "Login success!",
+			"info": user_info(request.user)
 		}, status=200)
 
 	else:
@@ -105,3 +107,60 @@ def _update_user_roles(user_authc):
 	elif user_authc.role == 'user':
 		user_group = Group.objects.get_or_create(name='user')[0]
 		user_authc.groups.add(user_group)
+
+def get_user_permissions(user):
+	if user.is_superuser:
+		return Permission.objects.all()
+	if not user.is_authenticated:
+		return user.user_permissions.all()
+	return user.user_permissions.all() | Permission.objects.filter(group__user=user)
+
+def get_user_permissions_list(user):
+	
+	perms = get_user_permissions(user)
+	perms_codenames = []
+	
+	for perm in perms:
+		perms_codenames.append(perm.codename)
+
+	return perms_codenames
+
+def api_perms(request):
+
+	perms_codenames = get_user_permissions_list(request.user)
+	
+	return JsonResponse(perms_codenames, safe=False)
+
+def user_info(user):
+	email = None
+	username = None
+	name = None
+	phoneNumber = None
+	address = None
+	role = "anonymous"
+	permissions = get_user_permissions_list(user)
+	if user.is_authenticated:
+		user_obj: User = User.objects.get(pk=user.pk)
+		email = user_obj.email
+		username = user_obj.username
+		name = user_obj.name
+		phoneNumber = user_obj.phoneNumber
+		address = user_obj.address
+		role = user_obj.role
+		if user.is_superuser:
+			role = "superuser"
+	
+	return {
+		"email": email,
+		"username": username,
+		"name": name,
+		"phoneNumber": phoneNumber,
+		"address": address,
+		"role": role,
+		"permissions": permissions,
+	}
+
+def api_info(request):
+
+	print(user_info(request.user))
+	return JsonResponse(user_info(request.user))
