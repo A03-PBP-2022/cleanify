@@ -19,11 +19,11 @@ class ReadOnlyModelSerializer(serializers.ModelSerializer):
 
 class LimitedUserSerializer(ReadOnlyModelSerializer):
     username = serializers.CharField()
-    nama = serializers.CharField()
+    name = serializers.CharField()
 
     class Meta:
         model = User
-        fields = ['username', 'nama']
+        fields = ['username', 'name']
 
 class PostSerializer(serializers.ModelSerializer):
     author = LimitedUserSerializer()

@@ -45,9 +45,9 @@ class User(AbstractBaseUser, PermissionsMixin):
 	is_active = models.BooleanField(default=True)
 	is_staff = models.BooleanField(default=False)
 	is_superuser = models.BooleanField(default=False)
-	nama = models.CharField(max_length=100)
-	kontak = models.CharField(max_length=100)
-	alamat = models.TextField()
+	name = models.CharField(max_length=100)
+	phoneNumber = models.CharField(max_length=100)
+	address = models.TextField()
 	role = models.CharField(max_length=20)
 
 	#yang dibutuhkan untuk login 

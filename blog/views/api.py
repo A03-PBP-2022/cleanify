@@ -136,7 +136,7 @@ def list_comments(request, post_id):
 
 		comment['fields']['author'] = {
 			'username': user.username,
-			'name': user.nama,
+			'name': user.name,
 		}
 
 		comment['perms'] = {
