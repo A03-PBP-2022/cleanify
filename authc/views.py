@@ -92,6 +92,24 @@ def api_login(request):
 		}, status=401)
 
 @csrf_exempt
+def api_register(request):
+
+	form = RegistrationForm(request.POST)
+
+	if form.is_valid():
+		form.save()
+		return JsonResponse({
+			"status": True,
+			"message": "Registeration success!",
+		}, status=200)
+	else:
+		return JsonResponse({
+			"status": False,
+			"message": "Registration failed!",
+			"details": form.errors
+		}, status=400)
+
+@csrf_exempt
 def api_logout(request):
 
 	logout(request)
