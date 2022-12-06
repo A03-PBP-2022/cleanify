@@ -147,12 +147,6 @@ def get_user_permissions_list(user):
 
 	return perms_codenames
 
-def api_perms(request):
-
-	perms_codenames = get_user_permissions_list(request.user)
-	
-	return JsonResponse(perms_codenames, safe=False)
-
 def user_info(user):
 	email = None
 	username = None

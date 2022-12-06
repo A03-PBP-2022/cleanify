@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import registration_view, login_view, logout_view, api_login, api_logout, api_perms
+from .views import registration_view, login_view, logout_view, api_login, api_logout, api_register, api_info
 
 app_name = 'authc'
 
@@ -10,5 +10,5 @@ urlpatterns = [
     path('api/login', api_login, name='api_login'),
     path('api/logout', api_logout, name='api_logout'),
     path('api/register', api_register, name='api_register'),
-    path('api/perms', api_perms, name='api_perms') 
+    path('api/info', api_info, name='api_info') 
 ]
