@@ -17,12 +17,16 @@ def registration_view(request):
 		if form.is_valid():
 			form.save()
 			data['success'] = True
-			return HttpResponse(json.dumps(data), content_type='application/json')
+			return JsonResponse({
+				"success": True,
+				"message": "Registration success!",
+			}, status=200)
 		else:
-			data['error'] = form.errors
-			data['success'] = False
-			context['registration_form'] = form
-			return HttpResponse(json.dumps(data), content_type='application/json')
+			return JsonResponse({
+				"success": False,
+				"message": "Registration failed!",
+				"error": form.errors
+			}, status=400)
 
 	else:
 		form = RegistrationForm()
@@ -100,7 +104,7 @@ def api_register(request):
 		form.save()
 		return JsonResponse({
 			"status": True,
-			"message": "Registeration success!",
+			"message": "Registration success!",
 		}, status=200)
 	else:
 		return JsonResponse({
