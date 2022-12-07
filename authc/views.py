@@ -74,44 +74,58 @@ def logout_view(request):
 @csrf_exempt
 def api_login(request):
 
-	email = request.POST['email']
-	password = request.POST['password']
-	user = authenticate(email=email, password=password)
-	if user:
-		login(request, user)
-		user_authc = User.objects.get(pk=user.pk)
-		_update_user_roles(user_authc)
+	try:
+		email = request.POST['email']
+		password = request.POST['password']
+		user = authenticate(email=email, password=password)
 		
-		print(user_info(request.user))
-		return JsonResponse({
-			"status": True,
-			"message": "Login success!",
-			"info": user_info(request.user)
-		}, status=200)
+		if user:
+			login(request, user)
+			user_authc = User.objects.get(pk=user.pk)
+			_update_user_roles(user_authc)
+			
+			print(user_info(request.user))
+			return JsonResponse({
+				"status": True,
+				"message": "Login success!",
+				"info": user_info(request.user)
+			}, status=200)
 
-	else:
+		else:
+			return JsonResponse({
+				"status": False,
+				"message": "Login failed! Check your username and/or password."
+			}, status=401)
+		
+	except:
 		return JsonResponse({
 			"status": False,
-			"message": "Login failed! Check your username and/or password."
-		}, status=401)
+			"message": "Invalid request! Check your inputs again! This may happen on wrong credentials."
+		})
 
 @csrf_exempt
 def api_register(request):
 
-	form = RegistrationForm(request.POST)
+	try:
+		form = RegistrationForm(request.POST)
 
-	if form.is_valid():
-		form.save()
-		return JsonResponse({
-			"status": True,
-			"message": "Registration success!",
-		}, status=200)
-	else:
+		if form.is_valid():
+			form.save()
+			return JsonResponse({
+				"status": True,
+				"message": "Registration success!",
+			}, status=200)
+		else:
+			return JsonResponse({
+				"status": False,
+				"message": "Registration failed!",
+				"details": form.errors
+			}, status=400)
+	except:
 		return JsonResponse({
 			"status": False,
-			"message": "Registration failed!",
-			"details": form.errors
-		}, status=400)
+			"message": "Invalid request! Check your inputs again! This may happen on wrong credentials."
+		})
 
 @csrf_exempt
 def api_logout(request):
@@ -178,5 +192,5 @@ def user_info(user):
 
 def api_info(request):
 
-	print(user_info(request.user))
+	# print(user_info(request.user))
 	return JsonResponse(user_info(request.user))
