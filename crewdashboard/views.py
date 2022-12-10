@@ -21,6 +21,7 @@ def delete_card(request):
         card.delete()
     return redirect('todolist:show_todolist')
 
+@csrf_exempt
 @permission_required('crewdashboard.view_location')
 def show_json(request):
     data = Location.objects.all()
