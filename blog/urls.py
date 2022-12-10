@@ -1,5 +1,5 @@
-from django.urls import path
-from .views import api, page
+from django.urls import path, include
+from .views import api, api2, page
 app_name = 'blog'
 
 urlpatterns = [
@@ -7,6 +7,8 @@ urlpatterns = [
 	path('new/', page.create_post, name='create_post'),
 	path('<int:id>/', page.view_post, name='view_post'),
 	path('<int:id>/edit', page.edit_post, name='edit_post'),
+    
+    path('api2/', include(api2.router.urls)),
     
 	path('api/post', api.list_posts, name='api_list_posts'),
 	path('api/post/new', api.create_post, name='api_create_post'),

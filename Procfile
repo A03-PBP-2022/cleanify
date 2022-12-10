@@ -1,2 +1,1 @@
-release: bash procfile.sh
-web: gunicorn project_django.wsgi --log-file -
+web: bash procfile.sh && gunicorn project_django.wsgi --log-file -

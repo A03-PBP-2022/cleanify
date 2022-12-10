@@ -16,25 +16,18 @@ jobs:
   deploy:
     name: Deployment
     runs-on: ubuntu-latest
-    env:
-      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
     steps:
     - name: Check secrets
       run: |
-        if [ "$HEROKU_APP_NAME" == "" ] || [ "$HEROKU_API_KEY" == "" ] ; then
+        if [ "${{ secrets.RAILWAY_TOKEN }}" == "" ] || [ "${{ secrets.HEROKU_APP_NAME }}" == "" ] ; then
           exit 1
         fi
     - name: Checkout code
       uses: actions/checkout@v3
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
+    - name: Deploy to Railway
+      uses: bervProject/railway-deploy@0.0.7-alpha
       with:
-        ruby-version: '2.7'
-    - name: Deploy to Heroku
-      run: |
-        gem install dpl
-        dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+        railway_token: ${{ secrets.RAILWAY_TOKEN }}
     - name: Create GitHub deployment
       uses: chrnorm/deployment-action@v2
       with:
@@ -43,5 +36,5 @@ jobs:
         # Assuming you are not using custom domain on Heroku, the target_url
         # will contain the URL to your application hosted under Heroku's
         # subdomain.
-        environment-url: https://${{ secrets.HEROKU_APP_NAME }}.herokuapp.com
+        environment-url: https://${{ secrets.HEROKU_APP_NAME }}.up.railway.app
         environment: production

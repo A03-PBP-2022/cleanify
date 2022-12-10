@@ -7,6 +7,7 @@ from authc.models import User
 from blog.forms import PostForm, CommentForm
 from blog.models import Post, Comment
 from datetime import date, datetime
+from django.views.decorators.csrf import csrf_exempt
 import bleach
 import json
 
@@ -52,6 +53,7 @@ def get_post(request, post_id):
 	
 	return JsonResponse(object_to_json(post))
 
+@csrf_exempt
 def create_post(request):
 	if not request.user.is_authenticated or not request.user.has_perm('blog.add_post'):
 		return apires_unauthorized([])
@@ -72,6 +74,7 @@ def create_post(request):
 	
 	return apires_created(object_to_json(post))
 
+@csrf_exempt
 def edit_post(request, post_id):
 	if not request.user.is_authenticated or not (request.user.has_perm('blog.change_other_post') or request.user.has_perm('blog.change_self_post')):
 		return apires_unauthorized()
@@ -94,6 +97,7 @@ def edit_post(request, post_id):
 
 	return apires_ok(object_to_json(post))
 
+@csrf_exempt
 def delete_post(request, post_id):
 	if not request.user.is_authenticated or not (request.user.has_perm('blog.delete_other_post') or request.user.has_perm('blog.delete_self_post')):
 		return apires_unauthorized()
@@ -136,7 +140,7 @@ def list_comments(request, post_id):
 
 		comment['fields']['author'] = {
 			'username': user.username,
-			'name': user.nama,
+			'name': user.name,
 		}
 
 		comment['perms'] = {
@@ -159,6 +163,7 @@ def get_comment(request, post_id, comment_id):
 
 	return apires_ok(object_to_json(comment))
 
+@csrf_exempt
 def create_comment(request, post_id):
 	if not request.user.is_authenticated or not request.user.has_perm('blog.add_comment'):
 		return apires_unauthorized()
@@ -184,6 +189,7 @@ def create_comment(request, post_id):
 
 	return apires_created(object_to_json(comment))
 
+@csrf_exempt
 def edit_comment(request, post_id, comment_id):
 	if not request.user.is_authenticated or not (request.user.has_perm('blog.change_other_comment') or request.user.has_perm('blog.change_self_comment')):
 		return apires_unauthorized([])
@@ -210,6 +216,7 @@ def edit_comment(request, post_id, comment_id):
 
 	return apires_created(object_to_json(comment))
 
+@csrf_exempt
 def delete_comment(request, post_id, comment_id):
 	if not request.user.is_authenticated or not (request.user.has_perm('blog.delete_other_comment') or request.user.has_perm('blog.delete_self_comment')):
 		return apires_unauthorized()
