@@ -52,3 +52,16 @@ def add(request):
 
     return render(request, 'faq-form.html', {'form': form})
 
+@csrf_exempt
+def Add_from_flutter(request):
+    if request.method == 'POST':
+
+        new_FAQ = FAQ.objects.create(
+            question = request.POST['q'],
+            answer = request.POST['a'],
+        )
+
+        new_FAQ.save()
+    return JsonResponse({"instance": "FAQ erhasil ditambahkan"}, status=200)
+
+
