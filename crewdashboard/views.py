@@ -51,17 +51,23 @@ def add_new_locations(request):
 def flutter_addLocation(request):
     form = FormReport(request.POST)
     if form.is_valid():
+        form.save()
         location = request.POST.get('location')
         urgency = request.POST.get('urgency')
         description = request.POST.get('description')
-        new_location = Location(
-            date = datetime.datetime.now(),
-            location = location,
-            urgency = urgency,
-            description = description,
-        )
-        new_location.save() 
-    return JsonResponse({new_location},status=200)
+        # new_location = Location(
+        #     date = datetime.datetime.now(),
+        #     location = location,
+        #     urgency = urgency,
+        #     description = description,
+        # )
+        # new_location.save() 
+    return JsonResponse({
+        'location': location,
+        'urgency': urgency,
+        'description' : description,
+        'date' : datetime.datetime.now(),
+        }, status=200)
 
 @csrf_exempt
 def flutter_showJson():
