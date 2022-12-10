@@ -50,27 +50,25 @@ def add_new_locations(request):
 @csrf_exempt
 def flutter_addLocation(request):
     try:
-        form = FormReport(request.POST)
-        if form.is_valid():
-            form.save()
-            location = request.POST.get('location')
-            urgency = request.POST.get('urgency')
-            description = request.POST.get('description')
-            new_location = Location(
-                date = datetime.datetime.now(),
-                location = location,
-                urgency = urgency,
-                description = description,
-            )
-            new_location.save() 
-            response_data = {
-            'date' : datetime.datetime.now(),
-            'location': request.POST.get('location'),
-            'urgency': request.POST.get('urgency'),
-            'description' :request.POST.get('description')}
-            return JsonResponse(response_data)
-        else:
-            return JsonResponse({"message": "Failed!"})
+        # form = FormReport(request.POST)
+        location = request.POST.get('location')
+        urgency = request.POST.get('urgency')
+        description = request.POST.get('description')
+        new_location = Location(
+            date = datetime.datetime.now(),
+            location = location,
+            urgency = urgency,
+            description = description,
+        )
+        new_location.save() 
+        response_data = {
+        'date' : datetime.datetime.now(),
+        'location': request.POST.get('location'),
+        'urgency': request.POST.get('urgency'),
+        'description' :request.POST.get('description')}
+        return JsonResponse(response_data)
+        # else:
+        #     return JsonResponse({"message": "Failed!"})
 
     except:
         print("salah")
