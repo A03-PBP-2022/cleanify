@@ -44,7 +44,7 @@
 	</form>
 	{% endif %}
 
-	<div id="comments-list" class="mt-4" data-action='{% url "blog:api_list_comments" post.pk %}'>
+	<div id="comments-list" class="mt-4" data-action='{% url "blog:posts-comment-list" post.pk %}'>
 	</div>
 
 	<p id="comments-no-comment" class="fst-italic">No comments.</p>

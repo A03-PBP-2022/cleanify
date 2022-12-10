@@ -162,6 +162,7 @@ def get_user_permissions_list(user):
 	return perms_codenames
 
 def user_info(user):
+	pk = None
 	email = None
 	username = None
 	name = None
@@ -171,6 +172,7 @@ def user_info(user):
 	permissions = get_user_permissions_list(user)
 	if user.is_authenticated:
 		user_obj: User = User.objects.get(pk=user.pk)
+		pk = user.pk
 		email = user_obj.email
 		username = user_obj.username
 		name = user_obj.name
@@ -181,6 +183,7 @@ def user_info(user):
 			role = "superuser"
 	
 	return {
+		"pk": pk,
 		"email": email,
 		"username": username,
 		"name": name,

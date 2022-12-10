@@ -23,7 +23,7 @@ class LimitedUserSerializer(ReadOnlyModelSerializer):
 
     class Meta:
         model = User
-        fields = ['username', 'name']
+        fields = ['pk', 'username', 'name']
 
 class PostSerializer(serializers.ModelSerializer):
     author = LimitedUserSerializer()
@@ -63,7 +63,7 @@ class CommentSerializer(serializers.ModelSerializer):
         fields = ['pk', 'author', 'content', 'post', 'created_timestamp', 'modified_timestamp',]
     
 class CommentViewSet(ext_mixins.NestedViewSetMixin, viewsets.ModelViewSet):
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.all().order_by('-created_timestamp')
     serializer_class = CommentSerializer
     pagination_class = StandardResultsSetPagination
 
