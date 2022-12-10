@@ -3,7 +3,11 @@
 [![Status deployment](https://img.shields.io/github/workflow/status/A03-PBP-2022/proyek/Deployment?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/deployment.yml)
 [![Aplikasi Railway](https://img.shields.io/badge/railway-cleanifyid-blue?logo=railway&logoColor=white)](https://cleanifyid.up.railway.app/)
 
-🌐 Aplikasi Railway: https://cleanifyid.up.railway.app/
+Cleanify merupakan aplikasi berbasis platform yang menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Platform ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.
+
+## 📲 Gunakan
+
+Aplikasi *web* Cleanify dapat diakses pada https://cleanifyid.up.railway.app/.
 
 ## 👨‍👨‍👧‍👧 Anggota
 
@@ -12,10 +16,6 @@
 3. Thalia Fortuna (2106751890, [@thaliafortuna](https://github.com/thaliafortuna))
 4. Muhammad Alif Ilham (2106751341, [@Alifilhmm](https://github.com/Alifilhmm))
 5. Muhammad Rafi Adiwibowo (2106653855, [@rafiadiwibowo](https://github.com/rafiadiwibowo))
-
-## 🧠 Topik
-
-Aplikasi ini merupakan aplikasi berbasis platform yang menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Platform ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.
 
 ### 💢 Manfaat
 
