@@ -61,7 +61,7 @@ def flutter_addLocation(request):
             description = description,
         )
         new_location.save() 
-    return JsonResponse({},status=200)
+    return JsonResponse({new_location},status=200)
 
 @csrf_exempt
 def flutter_showJson():
