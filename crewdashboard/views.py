@@ -7,6 +7,8 @@ import datetime
 from django.views.decorators.csrf import csrf_exempt
 from .forms import FormReport
 from django.shortcuts import redirect
+from django.core import serializers
+from django.http.response import HttpResponse, JsonResponse
 
 # Create your views here.
 
@@ -44,3 +46,28 @@ def add_new_locations(request):
         )
         new_location.save()
     return render(request, 'locations.html', context)
+
+@csrf_exempt
+def flutter_addLocation(request):
+    form = FormReport(request.POST)
+    if form.is_valid():
+        location = request.POST.get('location')
+        urgency = request.POST.get('urgency')
+        description = request.POST.get('description')
+        new_location = Location(
+            date = datetime.datetime.now(),
+            location = location,
+            urgency = urgency,
+            description = description,
+        )
+        new_location.save() 
+    return JsonResponse(status=200)
+
+@csrf_exempt
+def flutter_showJson():
+    data = Location.objects.all()
+    serialize = serializers.serialize('json', data)
+    response = {
+        'locations': serialize,
+    }
+    return JsonResponse(response)
