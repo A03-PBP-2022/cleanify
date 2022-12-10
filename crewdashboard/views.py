@@ -50,7 +50,7 @@ def add_new_locations(request):
 @csrf_exempt
 def flutter_addLocation(request):
     form = FormReport(request.POST)
-    if form.is_valid():
+    if request.method == 'POST':
         form.save()
         location = request.POST.get('location')
         urgency = request.POST.get('urgency')
