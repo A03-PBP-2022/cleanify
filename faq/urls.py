@@ -6,5 +6,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('json/', json, name='json'),
     path('add/', add, name='add'),
-    path('thumbsup', update_thumbsUp, name='update_thumbsUp')
+    path('thumbsup/', update_thumbsUp, name='update_thumbsUp')
 ]
