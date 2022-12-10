@@ -8,6 +8,6 @@ urlpatterns = [
     path('dashboard/', show_locations, name='show_locations_admin'),
     path('json/', show_json, name='json'),
     path('delete/', delete_card, name='delete_card'),
-    path('report/', flutter_addLocation, name='addlocationflutter'),
-    path('jsonflutter/', flutter_showJson, name='jsonflutter')
+    path('reportlocation/', flutter_addLocation, name='addlocationflutter'),
+    path('locations/', flutter_showJson, name='jsonflutter')
 ]
