@@ -79,13 +79,13 @@ def flutter_createbank(request):
         print("salah")
         return JsonResponse({"message": "Failed!"})
 
-@permission_required('banksampah.view_bank')
+# @permission_required('banksampah.view_bank')
 def show_banksampah_json_flutter(request):
     data = Bank.objects.all()
     data_banksampah = serializers.serialize("json", data)
     return HttpResponse(data_banksampah, content_type="application/json")
 
-@permission_required('banksampah.view_bank')
+# @permission_required('banksampah.view_bank')
 def show_bank_flutter(request):
     data_bank = Bank.objects.all()
     context = {
