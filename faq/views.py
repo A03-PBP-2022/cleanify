@@ -5,6 +5,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.http import QueryDict
 from django.core import serializers
+from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required, permission_required
 import json
 from django.views.decorators.csrf import csrf_exempt
@@ -61,7 +62,9 @@ def Add_from_flutter(request):
             answer = request.POST['a'],
         )
 
+        new_FAQ.save()
 
-    return JsonResponse({"instance": "FAQ erhasil ditambahkan"}, status=200)
+
+    return JsonResponse({"instance": "FAQ berhasil ditambahkan"}, status=200)
 
 
