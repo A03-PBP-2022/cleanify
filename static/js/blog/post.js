@@ -180,6 +180,7 @@ if (newCommentForm) newCommentForm.addEventListener("submit", async event => {
 		const commentEl = createCommentEl(newComment)
 		commentsListEl.prepend(commentEl)
 		loadedComments.push(newComment.pk)
+		newCommentForm.querySelector('textarea').value = ''
 		// currentPage = Math.max(Math.ceil(loadedComments.length / 10), 1)
 		// // if (isLastPage) loadComments()
 		// loadComments()
