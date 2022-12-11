@@ -61,7 +61,7 @@ def Add_from_flutter(request):
             answer = request.POST['a'],
         )
 
-        new_FAQ.save()
+
     return JsonResponse({"instance": "FAQ erhasil ditambahkan"}, status=200)
 
 
