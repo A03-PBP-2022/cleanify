@@ -32,8 +32,7 @@ def create_bank(request):
 
 @permission_required('banksampah.view_bank')
 def show_bank(request):
-    user = request.user
-    data_bank = Bank.objects.filter(user=user)
+    data_bank = Bank.objects.all()
     context = {
         'list_bank': data_bank,
     }
@@ -47,6 +46,6 @@ def delete_bank(request, id):
 
 @permission_required('banksampah.view_bank')
 def show_banksampah_json(request):
-    user = request.user
-    data_banksampah = serializers.serialize("json", Bank.objects.filter(user=user))
+    data = Bank.objects.all()
+    data_banksampah = serializers.serialize("json", data)
     return HttpResponse(data_banksampah, content_type="application/json")
