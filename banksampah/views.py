@@ -55,7 +55,7 @@ def show_banksampah_json(request):
 
 @csrf_exempt
 def flutter_createbank(request):
-    try:
+    if request.method == 'POST':
         user = request.user
         jenis = request.POST.get('jenis')
         alamat = request.POST.get('alamat')
@@ -77,10 +77,6 @@ def flutter_createbank(request):
         'kontak' : request.POST.get('kontak'),
         }
         return JsonResponse(response_data)
-
-    except:
-        print("salah")
-        return JsonResponse({"message": "Failed!"})
 
 # @permission_required('banksampah.view_bank')
 def show_banksampah_json_flutter(request):
