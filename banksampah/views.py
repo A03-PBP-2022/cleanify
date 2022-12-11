@@ -32,7 +32,8 @@ def create_bank(request):
 
 @permission_required('banksampah.view_bank')
 def show_bank(request):
-    data_bank = Bank.objects.all()
+    user = request.user
+    data_bank = Bank.objects.filter(user=user)
     context = {
         'list_bank': data_bank,
     }
@@ -46,7 +47,8 @@ def delete_bank(request, id):
 
 @permission_required('banksampah.view_bank')
 def show_banksampah_json(request):
-    data = Bank.objects.all()
+    user = request.user
+    data = Bank.objects.filter(user=user)
     data_banksampah = serializers.serialize("json", data)
     return HttpResponse(data_banksampah, content_type="application/json")
 
@@ -76,3 +78,17 @@ def flutter_createbank(request):
     except:
         print("salah")
         return JsonResponse({"message": "Failed!"})
+
+@permission_required('banksampah.view_bank')
+def show_banksampah_json_flutter(request):
+    data = Bank.objects.all()
+    data_banksampah = serializers.serialize("json", data)
+    return HttpResponse(data_banksampah, content_type="application/json")
+
+@permission_required('banksampah.view_bank')
+def show_bank_flutter(request):
+    data_bank = Bank.objects.all()
+    context = {
+        'list_bank': data_bank,
+    }
+    return render(request, "showbank.html", context)
