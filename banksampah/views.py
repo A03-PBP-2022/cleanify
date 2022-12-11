@@ -67,13 +67,7 @@ def flutter_createbank(request):
             kontak=kontak,
         )
         new_project.save() 
-        response_data = {
-        'user' : request.user,
-        'jenis' : request.POST.get('jenis'),
-        'alamat' : request.POST.get('alamat'),
-        'tanggal' : request.POST.get('tanggal'),
-        'kontak' : request.POST.get('kontak')}
-        return JsonResponse(response_data)
+        return JsonResponse(new_project)
 
     except:
         print("salah")
