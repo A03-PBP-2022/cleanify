@@ -50,7 +50,6 @@ def add_new_locations(request):
 @csrf_exempt
 def flutter_addLocation(request):
     try:
-        Location.objects.all().delete()
         location = request.POST.get('location')
         urgency = request.POST.get('urgency')
         description = request.POST.get('description')
@@ -67,7 +66,6 @@ def flutter_addLocation(request):
         'urgency': request.POST.get('urgency'),
         'description' :request.POST.get('description')}
         return JsonResponse(response_data)
-
     except:
         print("salah")
         return JsonResponse({"message": "Failed!"})
