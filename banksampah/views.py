@@ -56,7 +56,7 @@ def show_banksampah_json(request):
 @csrf_exempt
 def flutter_createbank(request):
     try:
-        user = request.POST.get('user')
+        user = request.user
         jenis = request.POST.get('jenis')
         alamat = request.POST.get('alamat')
         tanggal = request.POST.get('tanggal')
@@ -70,7 +70,6 @@ def flutter_createbank(request):
         )
         new_project.save()
         response_data = {
-        'user' : request.POST.get('user'),
         'jenis' : request.POST.get('jenis'),
         'alamat' : request.POST.get('alamat'),
         'tanggal' : request.POST.get('tanggal'),
