@@ -220,7 +220,8 @@ def edit_comment(request, post_id, comment_id):
 def delete_comment(request, post_id, comment_id):
 	if not request.user.is_authenticated or not (request.user.has_perm('blog.delete_other_comment') or request.user.has_perm('blog.delete_self_comment')):
 		return apires_unauthorized()
-	if not request.method == "DELETE":
+	if not (request.method == "DELETE" or request.method == "POST"):
+		print(request.post)
 		return apires_bad_request()
 	
 	post = Post.objects.filter(pk=post_id).first()
