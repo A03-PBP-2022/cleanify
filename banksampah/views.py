@@ -79,7 +79,7 @@ def flutter_createbank(request):
         return JsonResponse(response_data)
     except:
         print("salah")
-        return JsonResponse({"message": "Failed!"} + 'user')
+        return JsonResponse({"message": "Failed!"})
 
 # @permission_required('banksampah.view_bank')
 def show_banksampah_json_flutter(request):
