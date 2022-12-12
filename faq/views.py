@@ -54,7 +54,7 @@ def add(request):
     return render(request, 'faq-form.html', {'form': form})
 
 @csrf_exempt
-@permission_required('faq.add_faq')
+# @permission_required('faq.add_faq')
 def Add_from_flutter(request):
     if request.method == 'POST':
 
