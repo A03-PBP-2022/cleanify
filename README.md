@@ -1,6 +1,6 @@
 # Cleanify
 
-[![Status deployment](https://img.shields.io/github/workflow/status/A03-PBP-2022/proyek/Deployment?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/deployment.yml)
+[![Status deployment](https://img.shields.io/github/actions/workflow/status/A03-PBP-2022/proyek/deployment.yml?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/deployment.yml)
 [![Aplikasi Railway](https://img.shields.io/badge/railway-cleanifyid-blue?logo=railway&logoColor=white)](https://cleanifyid.up.railway.app/)
 
 Cleanify merupakan aplikasi berbasis platform yang menawarkan jasa untuk membantu membersihkan sampah di sekitar kita. Aplikasi ini memudahkan masyarakat untuk menjaga lingkungan yang lebih bersih lagi. Platform ini juga mempunyai tujuan untuk meningkatkan awareness masyarakat terhadap lingkungan sekitar.
