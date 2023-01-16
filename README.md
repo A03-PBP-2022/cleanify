@@ -1,3 +1,5 @@
+<img align=right src=https://raw.githubusercontent.com/A03-PBP-2022/cleanify-brand/master/logo.svg>
+
 # Cleanify
 
 [![Status deployment](https://img.shields.io/github/actions/workflow/status/A03-PBP-2022/proyek/deployment.yml?logo=github-actions&logoColor=white)](https://github.com/A03-PBP-2022/proyek/actions/workflows/deployment.yml)
@@ -7,7 +9,46 @@ Cleanify merupakan aplikasi berbasis platform yang menawarkan jasa untuk membant
 
 ## 📲 Gunakan
 
+> **Warning**
+>
+> Dikarenakan kelas Pemrograman Berbasis Platform di semester ini telah berakhir, aplikasi di Railway tersebut telah dimatikan. Namun, Anda tetap dapat mempersiapkannya di lingkungan lokal Anda (di komputer Anda) jika Anda ingin menjelajahi aplikasi ini.
+>
+> Foto-foto aplikasi juga dapat dilihat di [A03-PBP-2022/cleanify-gallery](https://github.com/A03-PBP-2022/cleanify-gallery).
+
 Aplikasi *web* Cleanify dapat diakses pada https://cleanifyid.up.railway.app/.
+
+### 🖥 Untuk Pengembangan
+
+Pastikan Python 3 yang relatif baru (3.10 digunakan di sini) telah terpasang dan lakukan tahap-tahap berikut.
+
+1. Pasang *package* yang dibutuhkan dengan `pip`.
+
+   ```
+   pip install -r requirements.txt
+   ```
+
+2. Persiapkan database dengan melakukan perintah-perintah berikut. Dikarenakan satu atau lain hal, caranya harus seperti ini.
+
+   ```
+   python manage.py makemigrations
+   python manage.py migrate
+   python manage.py flush --noinput
+   python manage.py migrate
+   ```
+
+3. Persiapkan *static files* yang digunakan.
+
+   ```
+   python manage.py collectstatic --noinput
+   ```
+
+4. Jalankan aplikasi *server* Django.
+
+   ```
+   python manage.py runserver
+   ```
+
+5. Buka *server* Django Anda dengan membuka alamat yang diberikan oleh Django (biasanya `127.0.0.1:8000`) di aplikasi peramban web Anda.
 
 ## 👨‍👨‍👧‍👧 Anggota
 
